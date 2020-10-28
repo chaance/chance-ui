@@ -1,0 +1,17 @@
+{
+  "name": "chance-ui",
+  "version": "0.0.1",
+  "description": "I am Chance, and this repository is for building UIs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ui",
+    "frontend",
+    "react",
+    "components"
+  ],
+  "author": "Chance Strickland",
+  "license": "MIT"
+}
