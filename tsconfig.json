@@ -1,0 +1,35 @@
+{
+	"include": ["packages", "types", "scripts"],
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"alwaysStrict": true,
+		"baseUrl": ".",
+		"emitDecoratorMetadata": false,
+		"esModuleInterop": true,
+		"experimentalDecorators": false,
+		"importHelpers": true,
+		"jsx": "react",
+		"lib": ["dom", "esnext"],
+		"moduleResolution": "node",
+		"noFallthroughCasesInSwitch": false,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"pretty": true,
+		"sourceMap": true,
+		"strict": true,
+		"strictFunctionTypes": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"stripInternal": true,
+		"target": "es5",
+		"typeRoots": ["./node_modules/@types", "./types"],
+		"paths": {
+			"@chance/utils": ["packages/utils/src"],
+			"@chance/visually-hidden": ["packages/visually-hidden/src"],
+			"$test/*": ["test/*"]
+		}
+	}
+}

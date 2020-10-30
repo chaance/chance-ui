@@ -1,0 +1,36 @@
+{
+	"name": "@chance/utils",
+	"version": "0.0.1",
+	"description": "Chance UI utilities.",
+	"author": "Chance Strickland <hi@chancedigital.io>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chaance/chance-ui.git",
+		"directory": "packages/utils"
+	},
+	"scripts": {
+		"build": "ts-node --transpile-only ../../scripts/build-package $npm_package_name"
+	},
+	"peerDependencies": {
+		"react": "^16.8.0 || ^17.0.0",
+		"react-dom": "^16.8.0 || ^17.0.0"
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.esm.js",
+	"typings": "dist/index.d.ts",
+	"files": [
+		"README.md",
+		"dist"
+	],
+	"dependencies": {
+		"tslib": "^2.0.3"
+	},
+	"keywords": [
+		"ui",
+		"a11y",
+		"frontend",
+		"react",
+		"components"
+	]
+}
