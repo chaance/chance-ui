@@ -29,14 +29,12 @@
 		"target": "ES2018",
 		"typeRoots": ["./node_modules/@types", "./types"],
 		"paths": {
-			// packages
 			"@chance/utils": ["packages/utils/src"],
 			"@chance/utils/*": ["packages/utils/src/*"],
 
 			"@chance/visually-hidden": ["packages/visually-hidden/src"],
 			"@chance/visually-hidden/*": ["packages/visually-hidden/src/*"],
 
-			// other
 			"$test/*": ["test/*"]
 		}
 	}

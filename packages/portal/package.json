@@ -24,7 +24,7 @@
 		"/*.css",
 		"/*.map",
 		"/*.js",
-		"/*.d.ts"
+		"/*.ts"
 	],
 	"dependencies": {
 		"tslib": "^2.0.3"

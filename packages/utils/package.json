@@ -21,7 +21,10 @@
 	"typings": "index.d.ts",
 	"files": [
 		"README.md",
-		"dist"
+		"/*.css",
+		"/*.map",
+		"/*.js",
+		"/*.ts"
 	],
 	"dependencies": {
 		"tslib": "^2.0.3"

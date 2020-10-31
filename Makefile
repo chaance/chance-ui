@@ -10,8 +10,7 @@ build:
 	$(TS_NODE) --max-old-space-size=3049 scripts/build-all
 
 clean-build:
-	rm -rf packages/*/dist
-	rm -rf packages/*/npm-debug*
+	$(TS_NODE) scripts/clean-dist
 
 clean:
 	rm -rf node_modules

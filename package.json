@@ -109,7 +109,9 @@
 	],
 	"eslintIgnore": [
 		"node_modules",
-		"dist"
+		"/packages/*/*.js",
+		"/packages/*/*.ts",
+		"/packages/*/*.map"
 	],
 	"husky": {
 		"hooks": {

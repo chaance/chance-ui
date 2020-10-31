@@ -122,11 +122,11 @@ export async function build(packageDetails: {
 		// than adjacent to the bundled code, which we don't want. Unclear exactly why, but this script
 		// moves it back after rollup is done.
 		// https://github.com/ezolenko/rollup-plugin-typescript2/issues/136
-		moveDeclarationFilesToDistTypes(
-			opts.name,
-			opts.packageRoot,
-			opts.packageDistTypes
-		);
+		// moveDeclarationFilesToDistTypes(
+		// 	opts.name,
+		// 	opts.packageRoot,
+		// 	opts.packageDistTypes
+		// );
 
 		logBuildStepCompletion(opts.name, "Building complete", "🍻");
 	} catch (error) {
@@ -145,7 +145,7 @@ async function createRollupConfig(
 	// Minify if explicitly directed, or if we're bundling for production CJS.
 	let shouldMinify = opts.minify ?? (env === "production" && format !== "esm");
 
-	let outDir = path.join(packageRoot, "dist");
+	let outDir = packageRoot;
 
 	let outputFilename = buildDelineatedFilename(
 		outDir,
@@ -335,26 +335,26 @@ export async function getPackageDirectoryMap() {
 	return topoPackageMap;
 }
 
-async function moveDeclarationFilesToDistTypes(
-	packageName: string,
-	packageRoot: string,
-	packageDistTypes: string
-) {
-	try {
-		let packageRelativePath = path.relative(PATHS.PACKAGES, packageRoot);
-		let misplacedDeclarationFilesRoot = path.join(
-			packageDistTypes,
-			packageRelativePath,
-			"src"
-		);
-		let distTypes = packageDistTypes;
-		await fs.copy(misplacedDeclarationFilesRoot, distTypes);
+// async function moveDeclarationFilesToDistTypes(
+// 	packageName: string,
+// 	packageRoot: string,
+// 	packageDistTypes: string
+// ) {
+// 	try {
+// 		let packageRelativePath = path.relative(PATHS.PACKAGES, packageRoot);
+// 		let misplacedDeclarationFilesRoot = path.join(
+// 			packageDistTypes,
+// 			packageRelativePath,
+// 			"src"
+// 		);
+// 		let distTypes = packageDistTypes;
+// 		await fs.copy(misplacedDeclarationFilesRoot, distTypes);
 
-		// delete leftover folder
-		let relativeDirToDelete = packageRelativePath.replace(packageName, "");
-		await fs.remove(path.resolve(packageDistTypes, relativeDirToDelete));
-	} catch (e) {}
-}
+// 		// delete leftover folder
+// 		let relativeDirToDelete = packageRelativePath.replace(packageName, "");
+// 		await fs.remove(path.resolve(packageDistTypes, relativeDirToDelete));
+// 	} catch (e) {}
+// }
 
 function writeCjsEntryFile(name: string, packageDist: string) {
 	let contents = `'use strict';
