@@ -16,9 +16,9 @@
 		"react": "^16.8.0 || ^17.0.0",
 		"react-dom": "^16.8.0 || ^17.0.0"
 	},
-	"main": "dist/index.js",
-	"module": "dist/index.esm.js",
-	"typings": "dist/index.d.ts",
+	"main": "index.js",
+	"module": "index.esm.js",
+	"typings": "index.d.ts",
 	"files": [
 		"README.md",
 		"dist"

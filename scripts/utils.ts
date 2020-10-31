@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import ms from "pretty-ms";
 import path from "path";
 import mri from "mri";
+import rimraf from "rimraf";
 import { PATHS } from "./constants";
 import { NormalizedOpts, Falsey } from "./types";
 import { exec } from "child_process";
@@ -76,11 +77,24 @@ export function logBuildStepCompletion(
 
 export async function cleanDistDirectories() {
 	return await new Promise((res, reject) => {
-		exec(
-			`rm -rf ${path.join(PATHS.PROJECT_ROOT, "packages", "*", "*", "dist")}`,
-			(err) => (err ? reject(err.message) : res("hell yeah pew pew deleted!"))
-		);
+		try {
+			rimraf(
+				path.join(PATHS.PROJECT_ROOT, "packages", "*", "*.(js|ts|map|css)"),
+				() => {
+					res("hell yeah pew pew deleted!");
+				}
+			);
+		} catch (err) {
+			reject(err);
+		}
 	});
+
+	// return await new Promise((res, reject) => {
+	// 	exec(
+	// 		`rm -rf ${path.join(PATHS.PROJECT_ROOT, "packages", "*", "dist")}`,
+	// 		(err) => (err ? reject(err.message) : res("hell yeah pew pew deleted!"))
+	// 	);
+	// });
 }
 
 export function parseArgs() {

@@ -1,14 +1,15 @@
 /**
- * Provides text for screen readers that is visually hidden.
- * It is the logical opposite of the `aria-hidden` attribute.
+ * Provides text for screen readers that is visually hidden. It is the logical
+ * opposite of the `aria-hidden` attribute.
  *
  * @see https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  * @see https://a11yproject.com/posts/how-to-hide-content/
  * @see Docs     TODO:
- * @see Source   https://github.com/chaance/chance-ui/tree/main/packages/visually-hidden
+ * @see Source
+ * https://github.com/chaance/chance-ui/tree/main/packages/visually-hidden
  */
 
-import React, { forwardRef } from "react";
+import * as React from "react";
 
 /**
  * VisuallyHidden
@@ -16,7 +17,7 @@ import React, { forwardRef } from "react";
  * Provides text for screen readers that is visually hidden.
  * It is the logical opposite of the `aria-hidden` attribute.
  */
-const VisuallyHidden = forwardRef<
+const VisuallyHidden = React.forwardRef<
 	HTMLSpanElement,
 	React.HTMLAttributes<HTMLSpanElement>
 >(function VisuallyHidden(props, ref) {

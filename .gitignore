@@ -7,4 +7,6 @@ bazel-out
 .vscode
 .idea
 TODO.md
-/index.js
+/packages/*/*.js
+/packages/*/*.ts
+/packages/*/*.map

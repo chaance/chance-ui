@@ -1,13 +1,13 @@
 {
-	"name": "@chance/visually-hidden",
+	"name": "@chance/portal",
 	"version": "0.0.1",
-	"description": "A react component for visually hidden content for screen reader users.",
+	"description": "A react component for rendering a React Tree in a target host DOM element.",
 	"author": "Chance Strickland <hi@chancedigital.io>",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/chaance/chance-ui.git",
-		"directory": "packages/visually-hidden"
+		"directory": "packages/portal"
 	},
 	"scripts": {
 		"build": "ts-node --transpile-only ../../scripts/build-package $npm_package_name"
@@ -21,7 +21,10 @@
 	"typings": "index.d.ts",
 	"files": [
 		"README.md",
-		"dist"
+		"/*.css",
+		"/*.map",
+		"/*.js",
+		"/*.d.ts"
 	],
 	"dependencies": {
 		"tslib": "^2.0.3"
