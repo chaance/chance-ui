@@ -26,8 +26,8 @@ function useVisuallyHidden(props?: {
 			// https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
 			whiteSpace: "nowrap",
 			wordWrap: "normal",
-			...(props ? (props.style as React.CSSProperties) : {}),
-		} as React.CSSProperties,
+			...(props?.style || {}),
+		},
 	};
 }
 

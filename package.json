@@ -17,16 +17,16 @@
 		"test": "cross-env CI=true ts-node ./scripts/test packages",
 		"test:pkg": "cross-env CI=true ts-node ./scripts/test --pkg",
 		"test:coverage": "yarn test --coverage",
-		"build": "yarn build:config && yarn build:packages && yarn build:cleanup",
-		"build:config": "mv tsconfig.json tsconfig.tmp.json && mv tsconfig.production.json tsconfig.json",
+		"build": "yarn build:packages",
 		"build:packages": "preconstruct build",
-		"build:cleanup": "mv tsconfig.json tsconfig.production.json && mv tsconfig.tmp.json tsconfig.json",
 		"gen:ignore": "cross-env CI=true ts-node ./scripts/generate-ignore-files",
 		"ver": "lerna version --no-push --exact",
 		"changes": "dotenv lerna-changelog",
 		"fix": "preconstruct fix",
 		"lint": "eslint .",
-		"postinstall": "preconstruct dev"
+		"dev:reset": "preconstruct dev",
+		"dev": "yarn dev:reset",
+		"postinstall": "yarn dev:reset"
 	},
 	"keywords": [
 		"ui",
