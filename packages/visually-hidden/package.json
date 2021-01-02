@@ -4,30 +4,32 @@
 	"description": "A react component for visually hidden content for screen reader users.",
 	"author": "Chance Strickland <hi@chancedigital.io>",
 	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/chaance/chance-ui.git",
 		"directory": "packages/visually-hidden"
 	},
-	"scripts": {
-		"build": "ts-node --transpile-only ../../scripts/build-package $npm_package_name"
-	},
+	"scripts": {},
 	"peerDependencies": {
 		"react": "^16.8.0 || ^17.0.0",
 		"react-dom": "^16.8.0 || ^17.0.0"
 	},
-	"main": "index.js",
-	"module": "index.esm.js",
-	"typings": "index.d.ts",
-	"files": [
-		"README.md",
-		"/*.css",
-		"/*.map",
-		"/*.js",
-		"/*.ts"
-	],
+	"source": "src/index.ts",
+	"main": "dist/chance-visually-hidden.cjs.js",
+	"module": "dist/chance-visually-hidden.esm.js",
+	"unpkg": "dist/chance-visually-hidden.cjs.js",
 	"dependencies": {
-		"tslib": "^2.0.3"
+		"@chance/ui-utils": "0.0.1"
+	},
+	"preconstruct": {
+		"entrypoints": [
+			"index.ts",
+			"react-visually-hidden.tsx",
+			"use-visually-hidden.ts"
+		]
 	},
 	"keywords": [
 		"ui",

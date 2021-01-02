@@ -1,33 +1,35 @@
 {
-	"name": "@chance/utils",
+	"name": "@chance/ui-utils",
 	"version": "0.0.1",
-	"description": "Chance UI utilities.",
+	"description": "Utilities for chance-ui",
 	"author": "Chance Strickland <hi@chancedigital.io>",
 	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/chaance/chance-ui.git",
 		"directory": "packages/utils"
 	},
-	"scripts": {
-		"build": "ts-node --transpile-only ../../scripts/build-package $npm_package_name"
-	},
+	"scripts": {},
 	"peerDependencies": {
 		"react": "^16.8.0 || ^17.0.0",
 		"react-dom": "^16.8.0 || ^17.0.0"
 	},
-	"main": "index.js",
-	"module": "index.esm.js",
-	"typings": "index.d.ts",
-	"files": [
-		"README.md",
-		"/*.css",
-		"/*.map",
-		"/*.js",
-		"/*.ts"
-	],
-	"dependencies": {
-		"tslib": "^2.0.3"
+	"source": "src/index.ts",
+	"main": "dist/chance-ui-utils.cjs.js",
+	"module": "dist/chance-ui-utils.esm.js",
+	"unpkg": "dist/chance-ui-utils.cjs.js",
+	"preconstruct": {
+		"entrypoints": [
+			"index.ts",
+			"can-use-dom.ts",
+			"polymorphic.ts",
+			"use-callback-ref.ts",
+			"use-force-update.ts",
+			"use-layout-effect.ts"
+		]
 	},
 	"keywords": [
 		"ui",

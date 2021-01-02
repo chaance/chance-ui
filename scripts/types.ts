@@ -1,4 +1,18 @@
 import { CompilerOptions } from "typescript";
+import { PackageJson as _PackageJson, TsConfigJson } from "type-fest";
+
+export type { TsConfigJson };
+
+export type PackageJson = _PackageJson & {
+	preconstruct?: {
+		entrypoints?: string[];
+	};
+};
+
+export type Package = {
+	rootPath: string;
+	packageJSON: PackageJson;
+};
 
 interface SharedOpts {
 	// TODO: Not sure we need to support this
@@ -22,7 +36,6 @@ export interface NormalizedOpts extends Omit<BuildOpts, "name" | "target"> {
 	target?: "node" | "browser";
 	packageRoot: string;
 	packageDist: string;
-	packageDistTypes: string;
 	packageSrc: string;
 }
 
@@ -71,3 +84,22 @@ export type TSConfigJSON = {
 };
 
 export type Falsey = undefined | null | false | 0;
+
+type Person = string | { name: string; url?: string; email?: string };
+type BugsLocation = string | { url?: string; email?: string };
+interface DirectoryLocations {
+	[directoryType: string]: unknown;
+
+	bin?: string;
+	doc?: string;
+	example?: string;
+	lib?: string;
+	man?: string;
+	test?: string;
+}
+
+type Primitive = null | undefined | string | number | boolean | symbol | bigint;
+
+type LiteralUnion<LiteralType, BaseType extends Primitive> =
+	| LiteralType
+	| (BaseType & { _?: never });

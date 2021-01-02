@@ -1,124 +1,94 @@
 import chalk from "chalk";
 import fs from "fs-extra";
-import ms from "pretty-ms";
 import path from "path";
-import mri from "mri";
 import { PATHS } from "./constants";
-import { NormalizedOpts, Falsey } from "./types";
-import { exec } from "child_process";
+import type { Package, PackageJson } from "./types";
 
-const stderr = console.error.bind(console);
-
-export function external(id: string) {
-	return !id.startsWith(".") && !path.isAbsolute(id);
-}
-
-// Make sure any symlinks in a package folder are resolved:
-// https://github.com/facebookincubator/create-react-app/issues/637
-export const packageDirectory = fs.realpathSync(process.cwd());
-
-export function normalizeOpts(opts: any): NormalizedOpts {
-	let { name } = opts;
-	let packageSrc = path.join(opts.packageRoot, "src");
-	let packageDist = path.join(opts.packageRoot);
-	let packageDistTypes = path.join(packageDist, "types");
-
-	return {
-		...opts,
-		name,
-		input: Array.isArray(opts.input) ? opts.input : [opts.input],
-		packageSrc,
-		packageDist,
-		packageDistTypes,
-	};
-}
-
-export function logError(err: any) {
-	let error = err.error || err;
-	let description = `${error.name ? error.name + ": " : ""}${
-		error.message || error
-	}`;
-	let message = error.plugin
-		? error.plugin === "rpt2"
-			? `(typescript) ${description}`
-			: `(${error.plugin} plugin) ${description}`
-		: description;
-
-	stderr(chalk.bold.red(message));
-
-	if (error.loc) {
-		stderr();
-		stderr(`at ${error.loc.file}:${error.loc.line}:${error.loc.column}`);
+export function getPackageJSON(rootPath: string): PackageJson | undefined {
+	try {
+		return require(path.join(rootPath, "package.json"));
+	} catch (err) {
+		return undefined;
 	}
-
-	if (error.frame) {
-		stderr();
-		stderr(chalk.dim(error.frame));
-	} else if (err.stack) {
-		const headlessStack = error.stack.replace(message, "");
-		stderr(chalk.dim(headlessStack));
-	}
-
-	stderr();
 }
 
 export function warn(name: string, message: string) {
 	console.log(chalk.yellow(`[${chalk.bold(name)}]: ${message}`));
 }
 
-export function logBuildStepCompletion(
-	name: string,
-	message: string,
-	emoji = "💯"
-) {
-	console.log(`[${chalk.bold(name)}]: ${message} ${emoji}`);
+export async function getPackages(): Promise<Package[]> {
+	const packages: Package[] = [];
+	const paths = await getDirectoryPaths(PATHS.PACKAGES);
+	for (const possiblePackagePath of paths) {
+		const packageJSON = getPackageJSON(possiblePackagePath);
+		if (packageJSON?.name) {
+			packages.push({
+				rootPath: possiblePackagePath,
+				packageJSON,
+			});
+		}
+	}
+
+	return packages;
+}
+
+export function getPackageEntrypointEntries(pkg: Package): string[] {
+	return pkg.packageJSON.preconstruct?.entrypoints || ["index.ts"];
+}
+
+export function getPackageEntrypointSourcePaths(pkg: Package): string[] {
+	return getPackageEntrypointEntries(pkg).map((entry) =>
+		path.join(pkg.rootPath, "src", entry)
+	);
+}
+
+export function getPackageDistPaths(pkg: Package): string[] {
+	return getPackageEntrypointEntries(pkg).map((entry) =>
+		entry === "index.ts"
+			? path.join(pkg.rootPath, "dist")
+			: path.join(pkg.rootPath, removeExtension(entry))
+	);
 }
 
 export async function cleanDistDirectories() {
-	return await new Promise((res, reject) => {
-		try {
-			const extensions = ["js", "ts", "map", "css"];
-			const arg = extensions.reduce(
-				(prev, ext) =>
-					prev +
-					" " +
-					path.join(PATHS.PROJECT_ROOT, "packages", "*", `*.${ext}`),
-				""
-			);
-			console.log(arg);
-			exec(`rm ${arg}`, () => res("hell yeah pew pew deleted!"));
-		} catch (err) {
-			reject(err);
+	const packages = await getPackages();
+	for (const pkg of packages) {
+		for (const entrypointPath of getPackageDistPaths(pkg)) {
+			if (await directoryExists(entrypointPath)) {
+				await fs.remove(entrypointPath);
+			}
 		}
-	});
+	}
 }
 
-export function parseArgs() {
-	let { _, ...args } = mri(process.argv.slice(2));
-	return args;
+export function removeExtension(filename: string) {
+	return filename.split(".").slice(0, -1).join(".");
 }
 
-export function buildDelineatedFilename(
-	pathname: string,
-	...args: (string | Falsey)[]
-) {
-	return path.join(pathname, args.filter(Boolean).join("."));
+export async function directoryExists(pathname: string) {
+	try {
+		return await isDirectory(pathname);
+	} catch (err) {
+		return false;
+	}
 }
 
-export function timeFromStart(start: number) {
-	return ms(Date.now() - start);
+export async function isDirectory(pathname: string) {
+	return (await fs.lstat(pathname)).isDirectory();
 }
 
-/** Just a helpful lil async util for creating space between processes ⏰ */
-export function waaaaitJustAMinute(howLongsItGonnaBe = 1) {
-	return new Promise((res) => setTimeout(res, howLongsItGonnaBe * 1000));
-}
-
-/** Resolve a bunch of promises sequentially before moving on */
-export function serialResolve(...promises: Promise<any>[]) {
-	return promises.reduce(
-		(promise, cur) =>
-			promise.then((result) => cur.then(Array.prototype.concat.bind(result))),
-		Promise.resolve([])
-	);
+export async function getDirectoryPaths(pathname: string): Promise<string[]> {
+	try {
+		const sourcePaths = await fs.readdir(pathname);
+		const paths: string[] = [];
+		for (const source of sourcePaths) {
+			const fullPath = path.join(pathname, source);
+			if (await directoryExists(fullPath)) {
+				paths.push(fullPath);
+			}
+		}
+		return paths;
+	} catch (err) {
+		return [];
+	}
 }

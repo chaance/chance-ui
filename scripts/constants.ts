@@ -9,8 +9,4 @@ export const PATHS = {
 	PACKAGES: path.join(PROJECT_ROOT, "packages"),
 	TESTS_SETUP: path.join(PROJECT_ROOT, "test/setupTests.ts"),
 	PROJECT_CACHE: path.join(PROJECT_ROOT, ".cache"),
-	PROGRESS_ESTIMATOR_CACHE: path.join(
-		PROJECT_ROOT,
-		"node_modules/.cache/progress-estimator"
-	),
 };
