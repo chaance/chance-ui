@@ -2,6 +2,5 @@
 /dist
 /react-focus-guard
 /use-focus-lock
-/use-focus-return
 /use-lock-layer
 /use-lock-subscription

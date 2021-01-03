@@ -29,7 +29,6 @@
 			"index.ts",
 			"react-focus-guard.tsx",
 			"use-focus-lock.ts",
-			"use-focus-return.ts",
 			"use-lock-layer.ts",
 			"use-lock-subscription.ts"
 		]
