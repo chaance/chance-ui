@@ -1,4 +1,5 @@
 export * from "./can-use-dom";
+export * from "./events";
 export * from "./ids";
 export * from "./polymorphic";
 export * from "./refs";

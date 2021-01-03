@@ -35,6 +35,7 @@
 		"entrypoints": [
 			"index.ts",
 			"can-use-dom.ts",
+			"events.ts",
 			"ids.ts",
 			"polymorphic.ts",
 			"refs.ts",
