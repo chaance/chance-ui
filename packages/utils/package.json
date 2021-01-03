@@ -13,6 +13,16 @@
 		"directory": "packages/utils"
 	},
 	"scripts": {},
+	"dependencies": {
+		"@types/lodash.isboolean": "^3.0.6",
+		"@types/lodash.isfunction": "^3.0.6",
+		"@types/lodash.isnumber": "^3.0.6",
+		"@types/lodash.isstring": "^4.0.6",
+		"lodash.isboolean": "^3.0.3",
+		"lodash.isfunction": "^3.0.9",
+		"lodash.isnumber": "^3.0.3",
+		"lodash.isstring": "^4.0.1"
+	},
 	"peerDependencies": {
 		"react": "^16.8.0 || ^17.0.0",
 		"react-dom": "^16.8.0 || ^17.0.0"
@@ -25,7 +35,10 @@
 		"entrypoints": [
 			"index.ts",
 			"can-use-dom.ts",
+			"ids.ts",
 			"polymorphic.ts",
+			"refs.ts",
+			"type-checks.ts",
 			"use-callback-ref.ts",
 			"use-force-update.ts",
 			"use-layout-effect.ts"

@@ -1,0 +1,41 @@
+{
+	"name": "@chance/dialog",
+	"version": "0.0.1",
+	"description": "Dialog",
+	"author": "Chance Strickland <hi@chancedigital.io>",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chaance/chance-ui.git",
+		"directory": "packages/utils"
+	},
+	"scripts": {},
+	"dependencies": {
+		"@reach/auto-id": "^0.12.1"
+	},
+	"peerDependencies": {
+		"react": "^16.8.0 || ^17.0.0",
+		"react-dom": "^16.8.0 || ^17.0.0"
+	},
+	"source": "src/index.ts",
+	"main": "dist/chance-dialog.cjs.js",
+	"module": "dist/chance-dialog.esm.js",
+	"unpkg": "dist/chance-dialog.cjs.js",
+	"preconstruct": {
+		"entrypoints": [
+			"index.ts",
+			"react-dialog.tsx",
+			"use-dialog.ts"
+		]
+	},
+	"keywords": [
+		"ui",
+		"a11y",
+		"frontend",
+		"react",
+		"components"
+	]
+}

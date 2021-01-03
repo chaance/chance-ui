@@ -14,7 +14,7 @@ import * as React from "react";
 import { useLockLayer } from "./use-lock-layer";
 import { wrapFocus } from "./utils";
 
-export default function useFocusLock(
+export function useFocusLock(
 	containerRef: React.RefObject<HTMLElement>,
 	options: {
 		disableReturn?: boolean;
