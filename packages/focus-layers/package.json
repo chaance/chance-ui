@@ -1,0 +1,44 @@
+{
+	"name": "@chance/focus-layers",
+	"version": "0.0.1",
+	"description": "Isolate focus within sections of the DOM.",
+	"author": "Chance Strickland <hi@chancedigital.io>",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chaance/chance-ui.git",
+		"directory": "packages/focus-layers"
+	},
+	"scripts": {},
+	"peerDependencies": {
+		"react": "^16.8.0 || ^17.0.0",
+		"react-dom": "^16.8.0 || ^17.0.0"
+	},
+	"source": "src/index.ts",
+	"main": "dist/chance-focus-layers.cjs.js",
+	"module": "dist/chance-focus-layers.esm.js",
+	"unpkg": "dist/chance-focus-layers.cjs.js",
+	"dependencies": {
+		"@chance/ui-utils": "0.0.1"
+	},
+	"preconstruct": {
+		"entrypoints": [
+			"index.ts",
+			"react-focus-guard.tsx",
+			"use-focus-lock.ts",
+			"use-focus-return.ts",
+			"use-lock-layer.ts",
+			"use-lock-subscription.ts"
+		]
+	},
+	"keywords": [
+		"ui",
+		"a11y",
+		"frontend",
+		"react",
+		"components"
+	]
+}
