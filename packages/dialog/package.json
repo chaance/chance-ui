@@ -14,6 +14,7 @@
 	},
 	"scripts": {},
 	"dependencies": {
+		"@chance/focus-layers": "0.0.1",
 		"@reach/auto-id": "^0.12.1"
 	},
 	"peerDependencies": {
