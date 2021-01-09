@@ -22,7 +22,8 @@
 	"module": "dist/chance-focus-layers.esm.js",
 	"unpkg": "dist/chance-focus-layers.cjs.js",
 	"dependencies": {
-		"@chance/ui-utils": "0.0.1"
+		"@chance/ui-utils": "0.0.1",
+		"@reach/auto-id": "^0.12.1"
 	},
 	"preconstruct": {
 		"entrypoints": [
