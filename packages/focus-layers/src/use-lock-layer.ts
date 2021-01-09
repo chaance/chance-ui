@@ -12,21 +12,31 @@
 
 import * as React from "react";
 import { LOCK_STACK } from "./lock-stack";
-import { newLockUID } from "./utils";
+import { useId } from "@reach/auto-id";
+import { makeId } from "@chance/ui-utils/ids";
 
 /**
  * Create and push a new lock onto the global LOCK_STACK, tied to the lifetime
  * of the caller. Returns a ref containing the current enabled state of the
  * layer, to be used for enabling/disabling the caller's lock logic.
  */
-export function useLockLayer(controlledUID?: string) {
-	const [uid] = React.useState(() => controlledUID || newLockUID());
+export function useLockLayer(
+	options: { disabled?: boolean; id?: string | null } = {}
+) {
+	const { disabled = false, id: controlledId } = options;
+	const generatedId = makeId("lock-layer", useId());
+	const id = controlledId || generatedId;
 	const enabledRef = React.useRef(false);
 
 	React.useLayoutEffect(() => {
-		LOCK_STACK.add(uid, (enabled) => (enabledRef.current = enabled));
-		return () => LOCK_STACK.remove(uid);
-	}, [uid]);
+		if (disabled) {
+			enabledRef.current = false;
+		} else {
+			LOCK_STACK.add(id, (enabled) => (enabledRef.current = enabled));
+			return () => LOCK_STACK.remove(id);
+		}
+		return;
+	}, [id, disabled]);
 
 	return enabledRef;
 }

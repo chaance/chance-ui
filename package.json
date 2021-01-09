@@ -18,7 +18,7 @@
 		"test:pkg": "cross-env CI=true ts-node ./scripts/test --pkg",
 		"test:coverage": "yarn test --coverage",
 		"build": "yarn build:packages",
-		"build:packages": "preconstruct build",
+		"build:packages": "yarn fix && preconstruct build",
 		"gen:ignore": "cross-env CI=true ts-node ./scripts/generate-ignore-files",
 		"ver": "lerna version --no-push --exact",
 		"changes": "dotenv lerna-changelog",

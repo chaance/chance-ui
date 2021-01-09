@@ -17,22 +17,22 @@ import { wrapFocus } from "./utils";
 export function useFocusLock(
 	containerRef: React.RefObject<HTMLElement>,
 	options: {
-		disableReturn?: boolean;
 		attachTo?: HTMLElement | Document;
-		disable?: boolean;
+		disabled?: boolean;
+		disableReturn?: boolean;
 	} = {}
 ) {
-	const { disableReturn, attachTo = document, disable } = options;
+	const { disableReturn, attachTo = document, disabled } = options;
 	// Create a new layer for this lock to occupy
-	const enabledRef = useLockLayer();
+	const enabledRef = useLockLayer({ disabled });
 
 	// Allow the caller to override the lock and force it to be disabled.
-	React.useEffect(() => {
-		if (!disable) {
+	React.useLayoutEffect(() => {
+		if (!disabled) {
 			return;
 		}
 		enabledRef.current = false;
-	}, [disable, enabledRef]);
+	}, [disabled, enabledRef]);
 
 	// Apply the actual lock logic to the container.
 	React.useLayoutEffect(() => {
@@ -49,13 +49,19 @@ export function useFocusLock(
 		}
 
 		function handleFocusIn(event: FocusEvent) {
-			if (!enabledRef.current) return;
+			if (!enabledRef.current) {
+				return;
+			}
 
 			const root = containerRef.current;
-			if (root == null) return;
+			if (root == null) {
+				return;
+			}
 
 			const newFocusElement = (event.target as Element | null) || document.body;
-			if (root.contains(newFocusElement)) return;
+			if (root.contains(newFocusElement)) {
+				return;
+			}
 
 			event.preventDefault();
 			event.stopImmediatePropagation();
@@ -63,10 +69,14 @@ export function useFocusLock(
 		}
 
 		function handleFocusOut(event: FocusEvent) {
-			if (!enabledRef.current) return;
+			if (!enabledRef.current) {
+				return;
+			}
 
 			const root = containerRef.current;
-			if (root == null) return;
+			if (root == null) {
+				return;
+			}
 
 			if (
 				event.relatedTarget == null ||
@@ -88,6 +98,7 @@ export function useFocusLock(
 		attachTo.addEventListener("focusout", handleFocusOut as EventListener, {
 			capture: true,
 		});
+
 		return () => {
 			attachTo.removeEventListener("focusin", handleFocusIn as EventListener, {
 				capture: true,
@@ -98,27 +109,31 @@ export function useFocusLock(
 				{ capture: true }
 			);
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [containerRef]);
+	}, [attachTo, containerRef, enabledRef]);
 
 	// Set up a focus return after the container is unmounted.
 	// This happens at the end to absolutely ensure that the return is the last
 	// thing that will run as part of this hook (i.e., that the focus handlers
 	// have been fully detached).
-	useFocusReturn(disableReturn);
+	useFocusReturn({ disabled: disabled || disableReturn });
 }
 
 /**
  * Return focus to where it was before the caller component was mounted.
  */
-function useFocusReturn(disabled?: boolean) {
+function useFocusReturn(options: { disabled?: boolean } = {}) {
+	const { disabled = false } = options;
 	// This isn't necessarily safe, but realistically it's sufficient.
 	const [target] = React.useState(() => document?.activeElement as HTMLElement);
+	const disabledRef = React.useRef(disabled);
+	React.useLayoutEffect(() => {
+		disabledRef.current = disabled;
+	});
 
 	React.useLayoutEffect(() => {
 		return () => {
 			// eslint-disable-next-line react-hooks/exhaustive-deps
-			if (disabled) {
+			if (disabledRef.current) {
 				return;
 			}
 

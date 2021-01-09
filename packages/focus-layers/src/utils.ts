@@ -1,8 +1,3 @@
-let lockCount = 0;
-export function newLockUID() {
-	return `lock-${lockCount++}`;
-}
-
 export function createFocusWalker(root: HTMLElement) {
 	return document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
 		acceptNode: (node: HTMLElement) =>
