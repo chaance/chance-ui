@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Default",
+	"compilerOptions": {
+		"declaration": true,
+		"downlevelIteration": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"lib": ["ES2020"],
+		"module": "ES2020",
+		"moduleResolution": "node",
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noUncheckedIndexedAccess": true,
+		"pretty": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"stripInternal": true,
+		"target": "ES2019"
+	},
+	"exclude": ["node_modules"]
+}

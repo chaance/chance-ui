@@ -7,7 +7,7 @@
 	],
 	"scripts": {
 		"postinstall": "manypkg check",
-		"build": "turbo run build",
+		"build": "node scripts/copy-license.mjs && turbo run build",
 		"dev": "turbo run dev --no-cache --parallel --continue",
 		"lint": "turbo run lint",
 		"test": "turbo run test",

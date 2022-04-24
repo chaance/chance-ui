@@ -32,45 +32,28 @@ importers:
 
   packages/dom:
     specifiers:
-      '@chance/tsconfig': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       tsup: ^5.12.6
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
       tsup: 5.12.6_typescript@4.6.3
 
   packages/dom-types:
     specifiers:
-      '@chance/tsconfig': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
-
-  packages/js:
-    specifiers:
-      '@chance/tsconfig': '*'
-      eslint: ^8.14.0
-      eslint-config-chance: ^1.0.0
-      tsup: ^5.12.6
-    devDependencies:
-      '@chance/tsconfig': link:../tsconfig
-      eslint: 8.14.0
-      eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
-      tsup: 5.12.6_typescript@4.6.3
 
   packages/react-accordion:
     specifiers:
       '@chance/dom': '*'
-      '@chance/js': '*'
       '@chance/react-descendants': '*'
       '@chance/react-utils': '*'
-      '@chance/tsconfig': '*'
+      '@chance/utils': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^17.0.2
@@ -78,12 +61,11 @@ importers:
       tiny-warning: ^1.0.3
     dependencies:
       '@chance/dom': link:../dom
-      '@chance/js': link:../js
       '@chance/react-descendants': link:../react-descendants
       '@chance/react-utils': link:../react-utils
+      '@chance/utils': link:../utils
       tiny-warning: 1.0.3
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
       react: 17.0.2
@@ -92,9 +74,8 @@ importers:
   packages/react-descendants:
     specifiers:
       '@chance/dom': '*'
-      '@chance/js': '*'
       '@chance/react-utils': '*'
-      '@chance/tsconfig': '*'
+      '@chance/utils': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^17.0.2
@@ -102,11 +83,10 @@ importers:
       tiny-warning: ^1.0.3
     dependencies:
       '@chance/dom': link:../dom
-      '@chance/js': link:../js
       '@chance/react-utils': link:../react-utils
+      '@chance/utils': link:../utils
       tiny-warning: 1.0.3
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
       react: 17.0.2
@@ -114,13 +94,11 @@ importers:
 
   packages/react-types:
     specifiers:
-      '@chance/tsconfig': '*'
       '@types/react': ^17.0.39
       '@types/react-dom': ^17.0.11
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       '@types/react': 17.0.39
       '@types/react-dom': 17.0.11
       eslint: 8.14.0
@@ -129,9 +107,8 @@ importers:
   packages/react-utils:
     specifiers:
       '@chance/dom': '*'
-      '@chance/js': '*'
       '@chance/react-types': '*'
-      '@chance/tsconfig': '*'
+      '@chance/utils': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^17.0.2
@@ -140,11 +117,10 @@ importers:
       tsup: ^5.12.6
     dependencies:
       '@chance/dom': link:../dom
-      '@chance/js': link:../js
       '@chance/react-types': link:../react-types
+      '@chance/utils': link:../utils
       tiny-warning: 1.0.3
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
       react: 17.0.2
@@ -153,30 +129,33 @@ importers:
 
   packages/react-visually-hidden:
     specifiers:
-      '@chance/tsconfig': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^17.0.2
       react-dom: ^17.0.2
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
 
-  packages/ts:
+  packages/types:
     specifiers:
-      '@chance/tsconfig': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
     devDependencies:
-      '@chance/tsconfig': link:../tsconfig
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
 
-  packages/tsconfig:
-    specifiers: {}
+  packages/utils:
+    specifiers:
+      eslint: ^8.14.0
+      eslint-config-chance: ^1.0.0
+      tsup: ^5.12.6
+    devDependencies:
+      eslint: 8.14.0
+      eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
+      tsup: 5.12.6_typescript@4.6.3
 
 packages:
 
