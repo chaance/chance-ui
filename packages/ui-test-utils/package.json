@@ -1,0 +1,40 @@
+{
+	"name": "@chance/ui-test-utils",
+	"version": "0.1.0",
+	"main": "./dist/test-utils.js",
+	"module": "./dist/test-utils.mjs",
+	"types": "./dist/test-utils.d.ts",
+	"files": [
+		"README.md",
+		"LICENSE",
+		"dist/**",
+		"src/**"
+	],
+	"license": "MIT",
+	"scripts": {
+		"build": "tsup src/test-utils.tsx --format esm,cjs --dts",
+		"dev": "tsup src/test-utils.tsx --format esm,cjs --watch --dts",
+		"lint": "TIMING=1 eslint src --fix",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+	},
+	"dependencies": {
+		"@testing-library/dom": "^8.13.0",
+		"@testing-library/jest-dom": "^5.16.4",
+		"@testing-library/react": "^12.1.5",
+		"@testing-library/react-hooks": "^8.0.0",
+		"@testing-library/user-event": "13.5.0",
+		"@vitest/ui": "^0.9.4",
+		"vitest": "^0.9.4"
+	},
+	"devDependencies": {
+		"eslint": "^8.14.0",
+		"eslint-config-chance": "^1.0.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"tsup": "^5.12.6"
+	},
+	"peerDependencies": {
+		"react": "17.x",
+		"react-dom": "17.x"
+	}
+}
