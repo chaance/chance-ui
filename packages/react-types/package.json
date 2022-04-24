@@ -1,0 +1,28 @@
+{
+	"name": "@chance/react-types",
+	"version": "0.1.0",
+	"main": "",
+	"types": "./react-types.d.ts",
+	"typeScriptVersion": "4.3.0",
+	"sideEffects": false,
+	"license": "MIT",
+	"files": [
+		"README.md",
+		"LICENSE",
+		"react-types.d.ts"
+	],
+	"scripts": {
+		"lint": "TIMING=1 eslint src --fix",
+		"clean": "rm -rf .turbo && rm -rf node_modules",
+		"build": "tsc"
+	},
+	"devDependencies": {
+		"@types/react": "^17.0.39",
+		"@types/react-dom": "^17.0.11",
+		"eslint": "^8.14.0",
+		"eslint-config-chance": "^1.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}

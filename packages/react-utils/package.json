@@ -1,0 +1,37 @@
+{
+	"name": "@chance/react-utils",
+	"version": "0.1.0",
+	"main": "./dist/react-utils.js",
+	"module": "./dist/react-utils.mjs",
+	"types": "./dist/react-utils.d.ts",
+	"files": [
+		"README.md",
+		"LICENSE",
+		"dist/**",
+		"src/**"
+	],
+	"license": "MIT",
+	"scripts": {
+		"build": "tsup src/react-utils.ts --format esm,cjs --dts",
+		"dev": "tsup src/react-utils.ts --format esm,cjs --watch --dts",
+		"lint": "TIMING=1 eslint src --fix",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+	},
+	"dependencies": {
+		"@chance/dom": "*",
+		"@chance/react-types": "*",
+		"@chance/utils": "*",
+		"tiny-warning": "^1.0.3"
+	},
+	"devDependencies": {
+		"eslint": "^8.14.0",
+		"eslint-config-chance": "^1.0.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"tsup": "^5.12.6"
+	},
+	"peerDependencies": {
+		"react": "17.x",
+		"react-dom": "17.x"
+	}
+}
