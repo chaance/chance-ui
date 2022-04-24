@@ -1,0 +1,26 @@
+{
+	"name": "@chance/dom-types",
+	"version": "0.1.0",
+	"main": "",
+	"types": "dom-types.d.ts",
+	"typeScriptVersion": "4.3.0",
+	"sideEffects": false,
+	"license": "MIT",
+	"files": [
+		"README.md",
+		"LICENSE",
+		"dom-types.d.ts"
+	],
+	"scripts": {
+		"lint": "TIMING=1 eslint src --fix",
+		"clean": "rm -rf .turbo && rm -rf node_modules",
+		"build": "tsc"
+	},
+	"devDependencies": {
+		"eslint": "^8.14.0",
+		"eslint-config-chance": "^1.0.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
