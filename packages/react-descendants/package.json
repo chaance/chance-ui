@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-descendants",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "./dist/react-descendants.js",
 	"module": "./dist/react-descendants.mjs",
 	"types": "./dist/react-descendants.d.ts",

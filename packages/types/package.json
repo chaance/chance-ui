@@ -1,6 +1,6 @@
 {
 	"name": "@chance/types",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "",
 	"types": "./types.d.ts",
 	"typeScriptVersion": "4.3.0",
