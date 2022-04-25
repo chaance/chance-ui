@@ -1,5 +1,11 @@
 # @chance/dom
 
+## 0.0.4
+
+### Patch Changes
+
+- e0680fa: Removes isArray util
+
 ## 0.0.3
 
 ### Patch Changes
