@@ -1,6 +1,6 @@
 {
 	"name": "@chance/ui-test-utils",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"main": "./dist/test-utils.js",
 	"module": "./dist/test-utils.mjs",
 	"types": "./dist/test-utils.d.ts",
