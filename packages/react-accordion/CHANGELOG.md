@@ -1,5 +1,16 @@
 # @chance/react-accordion
 
+## 0.0.5
+
+### Patch Changes
+
+- 6736fa4: Added util
+- Updated dependencies [6736fa4]
+  - @chance/dom@0.0.5
+  - @chance/react-descendants@0.0.5
+  - @chance/react-utils@0.0.5
+  - @chance/utils@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @chance/dom
 
+## 0.0.5
+
+### Patch Changes
+
+- 6736fa4: Added util
+
 ## 0.0.4
 
 ### Patch Changes
