@@ -43,7 +43,7 @@ jobs:
           echo "registry=https://registry.npmjs.org" >> ~/.npmrc
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
 
-      - name: Version + Publish
+      - name: Version + PR + Publish
         id: changesets
         uses: changesets/action@v1
         with:
