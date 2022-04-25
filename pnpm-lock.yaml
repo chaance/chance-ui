@@ -105,6 +105,7 @@ importers:
     specifiers:
       '@chance/dom': '*'
       '@chance/react-utils': '*'
+      '@chance/ui-test-utils': '*'
       '@chance/utils': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
@@ -117,6 +118,7 @@ importers:
       '@chance/utils': link:../utils
       tiny-warning: 1.0.3
     devDependencies:
+      '@chance/ui-test-utils': link:../ui-test-utils
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
       react: 18.0.0
@@ -137,7 +139,6 @@ importers:
   packages/react-utils:
     specifiers:
       '@chance/dom': '*'
-      '@chance/react-types': '*'
       '@chance/utils': '*'
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
@@ -147,7 +148,6 @@ importers:
       tsup: ^5.12.6
     dependencies:
       '@chance/dom': link:../dom
-      '@chance/react-types': link:../react-types
       '@chance/utils': link:../utils
       tiny-warning: 1.0.3
     devDependencies:
@@ -166,10 +166,11 @@ importers:
       eslint-config-chance: ^1.0.0
       react: ^18.0.0
       react-dom: ^18.0.0
-    devDependencies:
+    dependencies:
       '@chance/react-utils': link:../react-utils
-      '@chance/ui-test-utils': link:../ui-test-utils
       '@chance/utils': link:../utils
+    devDependencies:
+      '@chance/ui-test-utils': link:../ui-test-utils
       eslint: 8.14.0
       eslint-config-chance: 1.0.0_eslint@8.14.0+typescript@4.6.3
       react: 18.0.0
