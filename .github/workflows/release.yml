@@ -32,6 +32,11 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
+      - name: 🔐 Setup npm auth
+        run: |
+          echo "registry=https://registry.npmjs.org" >> ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+
       - name: Publish to npm
         id: changesets
         uses: changesets/action@v1
