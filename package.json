@@ -14,7 +14,7 @@
 		"clean": "turbo run clean && rm -rf node_modules",
 		"format": "prettier --write \"**/*.{json,js,jsx,ts,tsx,md}\"",
 		"changeset": "changeset",
-		"release": "turbo run build --filter=docs^... && changeset publish",
+		"publish": "turbo run build --filter=docs^... && changeset publish",
 		"version": "changeset version"
 	},
 	"dependencies": {
