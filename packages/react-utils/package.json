@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-utils",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "./dist/react-utils.js",
 	"module": "./dist/react-utils.mjs",
 	"types": "./dist/react-utils.d.ts",
