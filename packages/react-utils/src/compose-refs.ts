@@ -1,6 +1,6 @@
 import { useCallback } from "react";
+import type { MutableRefObject } from "react";
 import { isFunction } from "@chance/utils";
-import type { AssignableRef } from "@chance/react-types";
 
 /**
  * Passes or assigns an arbitrary value to a ref function or object.
@@ -41,3 +41,15 @@ export function useComposedRefs<RefValueType = any>(
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, refs);
 }
+
+/**
+ * React.Ref uses the readonly type `React.RefObject` instead of
+ * `React.MutableRefObject`, We pretty much always assume ref objects are
+ * mutable (at least when we create them), so this type is a workaround so some
+ * of the weird mechanics of using refs with TS.
+ */
+export type AssignableRef<ValueType> =
+	| {
+			bivarianceHack(instance: ValueType | null): void;
+	  }["bivarianceHack"]
+	| MutableRefObject<ValueType | null>;

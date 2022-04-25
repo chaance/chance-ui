@@ -19,7 +19,6 @@
 	},
 	"dependencies": {
 		"@chance/dom": "*",
-		"@chance/react-types": "*",
 		"@chance/utils": "*",
 		"tiny-warning": "^1.0.3"
 	},
@@ -33,5 +32,8 @@
 	"peerDependencies": {
 		"react": "17.x || 18.x",
 		"react-dom": "17.x || 18.x"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
