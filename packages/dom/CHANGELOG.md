@@ -1,5 +1,11 @@
 # @chance/dom
 
+## 0.0.8
+
+### Patch Changes
+
+- 188b146: Again with the utils
+
 ## 0.0.7
 
 ### Patch Changes
