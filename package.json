@@ -14,7 +14,8 @@
 		"clean": "turbo run clean && rm -rf node_modules",
 		"format": "prettier --write \"**/*.{json,js,jsx,ts,tsx,md}\"",
 		"changeset": "changeset",
-		"release": "turbo run build --filter=docs^... && changeset publish",
+		"prerelease": "pnpm build -- --filter=docs^... && node scripts/replace-workspace-versions.mjs",
+		"release": "pnpm run prerelease && changeset publish",
 		"version": "changeset version"
 	},
 	"dependencies": {
@@ -29,6 +30,7 @@
 		"@testing-library/react": "^13.1.1",
 		"@testing-library/user-event": "14.1.1",
 		"@types/node": "16.x",
+		"@types/prettier": "^2.6.0",
 		"@types/react": "^18.0.6",
 		"@types/react-dom": "^18.0.2",
 		"@vitejs/plugin-react": "^1.3.1",
@@ -42,7 +44,13 @@
 		"react-dom": "^18.0.0",
 		"tsup": "^5.12.6",
 		"turbo": "^1.2.5",
+		"type-fest": "^2.12.2",
 		"typescript": "^4.6.3",
 		"vitest": "^0.9.4"
+	},
+	"manypkg": {
+		"ignoredRules": [
+			"INTERNAL_MISMATCH"
+		]
 	}
 }

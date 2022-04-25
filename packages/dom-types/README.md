@@ -1,3 +1,0 @@
-# `@chance/dom-types`
-
-:)

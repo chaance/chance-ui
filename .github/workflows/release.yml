@@ -7,33 +7,50 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  CI: true
+
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           # This makes Actions fetch all Git history so that Changesets can
           # generate changelogs with the correct commits
           fetch-depth: 0
 
-      - name: Setup Node.js 16.x
-        uses: actions/setup-node@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
 
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Install with pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6.32.9
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
 
-      - name: Create Release Pull Request or Publish to npm
+      - name: Build
+        run: pnpm build
+
+      - name: Setup npm Auth
+        run: |
+          echo "registry=https://registry.npmjs.org" >> ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+
+      - name: Version + PR + Publish
         id: changesets
         uses: changesets/action@v1
         with:
-          # This expects you to have a script called release which does a build
-          # for your packages and calls changeset publish
-          publish: pnpm run release
+          version: pnpm run version
+          commit: "chore: Update versions"
+          title: "chore: Update versions"
+          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

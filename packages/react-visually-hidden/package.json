@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-visually-hidden",
-	"version": "0.1.0",
+	"version": "0.0.9",
 	"main": "./dist/react-visually-hidden.js",
 	"module": "./dist/react-visually-hidden.mjs",
 	"types": "./dist/react-visually-hidden.d.ts",
@@ -19,11 +19,12 @@
 		"lint": "TIMING=1 eslint src --fix",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@chance/react-utils": "workspace:*",
+		"@chance/utils": "workspace:*"
+	},
 	"devDependencies": {
-		"@chance/react-utils": "*",
-		"@chance/ui-test-utils": "*",
-		"@chance/utils": "*",
+		"@chance/ui-test-utils": "workspace:*",
 		"eslint": "^8.14.0",
 		"eslint-config-chance": "^1.0.0",
 		"react": "^18.0.0",
@@ -32,5 +33,8 @@
 	"peerDependencies": {
 		"react": "17.x || 18.x",
 		"react-dom": "17.x || 18.x"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

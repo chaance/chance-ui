@@ -1,3 +1,0 @@
-# `@chance/react-types`
-
-:)

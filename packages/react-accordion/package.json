@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-accordion",
-	"version": "0.1.0",
+	"version": "0.0.9",
 	"main": "./dist/react-accordion.js",
 	"module": "./dist/react-accordion.mjs",
 	"types": "./dist/react-accordion.d.ts",
@@ -20,14 +20,14 @@
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
 	"dependencies": {
-		"@chance/dom": "*",
-		"@chance/react-descendants": "*",
-		"@chance/react-utils": "*",
-		"@chance/utils": "*",
+		"@chance/dom": "workspace:*",
+		"@chance/react-descendants": "workspace:*",
+		"@chance/react-utils": "workspace:*",
+		"@chance/utils": "workspace:*",
 		"tiny-warning": "^1.0.3"
 	},
 	"devDependencies": {
-		"@chance/ui-test-utils": "*",
+		"@chance/ui-test-utils": "workspace:*",
 		"eslint": "^8.14.0",
 		"eslint-config-chance": "^1.0.0",
 		"react": "^18.0.0",
@@ -36,5 +36,8 @@
 	"peerDependencies": {
 		"react": "17.x || 18.x",
 		"react-dom": "17.x || 18.x"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

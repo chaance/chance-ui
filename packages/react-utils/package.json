@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-utils",
-	"version": "0.1.0",
+	"version": "0.0.9",
 	"main": "./dist/react-utils.js",
 	"module": "./dist/react-utils.mjs",
 	"types": "./dist/react-utils.d.ts",
@@ -18,9 +18,8 @@
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
 	"dependencies": {
-		"@chance/dom": "*",
-		"@chance/react-types": "*",
-		"@chance/utils": "*",
+		"@chance/dom": "workspace:*",
+		"@chance/utils": "workspace:*",
 		"tiny-warning": "^1.0.3"
 	},
 	"devDependencies": {
@@ -33,5 +32,8 @@
 	"peerDependencies": {
 		"react": "17.x || 18.x",
 		"react-dom": "17.x || 18.x"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
