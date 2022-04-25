@@ -1,5 +1,5 @@
 {
 	"extends": "../../tsconfig-dom.json",
 	"include": ["src", "test"],
-	"exclude": ["dist"],
+	"exclude": ["dist"]
 }
