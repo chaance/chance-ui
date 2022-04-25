@@ -11,12 +11,9 @@ function genId() {
 	return ++id;
 }
 
-/* eslint-disable react-hooks/rules-of-hooks */
-
 function useIdReact18(
 	providedId?: string | number | null | undefined
 ): string | number {
-	// @ts-expect-error
 	let id = React.useId();
 	return providedId ?? id;
 }
@@ -77,8 +74,10 @@ function useId(
 	providedId?: number | string | undefined | null
 ): string | number | null {
 	if ("useId" in React) {
+		// eslint-disable-next-line react-hooks/rules-of-hooks
 		return useIdReact18(providedId);
 	}
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 	return useIdReactLegacy(providedId);
 }
 
