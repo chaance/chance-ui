@@ -14,7 +14,7 @@
 		"clean": "turbo run clean && rm -rf node_modules",
 		"format": "prettier --write \"**/*.{json,js,jsx,ts,tsx,md}\"",
 		"changeset": "changeset",
-		"prerelease": "pnpm clean && pnpm install && pnpm build -- --filter=docs^... && node ./scripts/replace-workspace-versions.mjs",
+		"prerelease": "pnpm clean && pnpm install && pnpm build -- --filter=docs^... && node scripts/replace-workspace-versions.mjs",
 		"release": "pnpm run prerelease && changeset publish",
 		"version": "changeset version && pnpm install --frozen-lockfile=false"
 	},
