@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-visually-hidden",
-	"version": "0.1.0",
+	"version": "0.0.1",
 	"main": "./dist/react-visually-hidden.js",
 	"module": "./dist/react-visually-hidden.mjs",
 	"types": "./dist/react-visually-hidden.d.ts",
