@@ -1,5 +1,14 @@
 # @chance/react-visually-hidden
 
+## 0.0.6
+
+### Patch Changes
+
+- c1fdcf8: Use workspace protocol
+- Updated dependencies [c1fdcf8]
+  - @chance/react-utils@0.0.6
+  - @chance/utils@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes
