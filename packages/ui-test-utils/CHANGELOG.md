@@ -1,7 +1,0 @@
-# @chance/ui-test-utils
-
-## 0.0.9
-
-### Patch Changes
-
-- f72a543: Remove util
