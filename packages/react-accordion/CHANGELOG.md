@@ -1,5 +1,16 @@
 # @chance/react-accordion
 
+## 0.0.7
+
+### Patch Changes
+
+- 6d014d3: Removed array util
+- Updated dependencies [6d014d3]
+  - @chance/dom@0.0.7
+  - @chance/react-descendants@0.0.7
+  - @chance/react-utils@0.0.7
+  - @chance/utils@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

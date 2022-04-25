@@ -1,5 +1,11 @@
 # @chance/types
 
+## 0.0.7
+
+### Patch Changes
+
+- 6d014d3: Removed array util
+
 ## 0.0.6
 
 ### Patch Changes
