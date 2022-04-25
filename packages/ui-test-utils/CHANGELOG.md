@@ -1,5 +1,11 @@
 # @chance/ui-test-utils
 
+## 0.0.6
+
+### Patch Changes
+
+- c1fdcf8: Use workspace protocol
+
 ## 0.0.5
 
 ### Patch Changes
