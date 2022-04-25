@@ -8,21 +8,18 @@
 
 import * as React from "react";
 import {
-	createContext,
 	createComponentHook,
+	createContext,
 	createPolymorphicComponent,
 	useComposedRefs,
 	useControlledState,
-	useStatefulRefValue,
+	useId,
 } from "@chance/react-utils";
 import { createDescendantContext } from "@chance/react-descendants";
 import { composeEventHandlers } from "@chance/dom";
 import { isFunction, findFromEnd } from "@chance/utils";
 
-// TODO:
 const noop = () => {};
-const useId = (id: string | number | null | undefined) =>
-	id != null ? String(id) : "fake-id";
 
 const [DescendantsProvider, useDescendants, useDescendant] =
 	createDescendantContext<{
@@ -276,12 +273,6 @@ const useAccordionItem = createComponentHook<
 	let { accordionId, openPanels, readOnly } = useAccordionCtx("AccordionItem");
 	let buttonRef: ButtonRef = React.useRef(null);
 
-	// TODO: Hmmmmmmmmmm
-	let [, handleButtonRefSet] = useStatefulRefValue<HTMLElement | null>(
-		buttonRef,
-		null
-	);
-
 	// TODO
 	let ownRef = React.useRef<HTMLElement | null>(null);
 	let index = useDescendant("AccordionItem", {
@@ -313,7 +304,6 @@ const useAccordionItem = createComponentHook<
 			buttonId,
 			buttonRef,
 			disabled,
-			handleButtonRefSet,
 			index,
 			itemId,
 			panelId,
@@ -397,14 +387,13 @@ const useAccordionButton = createComponentHook<"button", AccordionButtonProps>(
 			disabled,
 			buttonId,
 			buttonRef: ownRef,
-			handleButtonRefSet,
 			index,
 			panelId,
 			state,
 		} = useAccordionItemCtx("AccordionButton");
 		let descendants = useDescendants("AccordionButton");
 
-		let ref = useComposedRefs(forwardedRef, handleButtonRefSet);
+		let ref = useComposedRefs(forwardedRef, ownRef);
 
 		function handleClick(event: React.MouseEvent) {
 			event.preventDefault();
@@ -663,7 +652,7 @@ type ButtonRef = React.MutableRefObject<any>;
 type AccordionIndex = number | number[];
 
 interface AccordionContextValue {
-	accordionId: string | undefined;
+	accordionId: string | null;
 	openPanels: AccordionIndex;
 	onSelectPanel(index: AccordionIndex): void;
 	readOnly: boolean;
@@ -677,7 +666,6 @@ interface AccordionItemContextValue {
 	buttonId: string;
 	index: number;
 	itemId: string;
-	handleButtonRefSet(refValue: HTMLElement): void;
 	buttonRef: ButtonRef;
 	panelId: string;
 	state: AccordionState;
