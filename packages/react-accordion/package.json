@@ -1,0 +1,40 @@
+{
+	"name": "@chance/react-accordion",
+	"version": "0.1.0",
+	"main": "./dist/react-accordion.js",
+	"module": "./dist/react-accordion.mjs",
+	"types": "./dist/react-accordion.d.ts",
+	"sideEffects": false,
+	"license": "MIT",
+	"files": [
+		"README.md",
+		"LICENSE",
+		"dist/**",
+		"src/**"
+	],
+	"scripts": {
+		"build": "tsup src/react-accordion.tsx --format esm,cjs --dts",
+		"dev": "tsup src/react-accordion.tsx --format esm,cjs --watch --dts",
+		"test": "vitest --config ../../vitest.config.ts",
+		"lint": "TIMING=1 eslint src --fix",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+	},
+	"dependencies": {
+		"@chance/dom": "*",
+		"@chance/react-descendants": "*",
+		"@chance/react-utils": "*",
+		"@chance/utils": "*",
+		"tiny-warning": "^1.0.3"
+	},
+	"devDependencies": {
+		"@chance/ui-test-utils": "*",
+		"eslint": "^8.14.0",
+		"eslint-config-chance": "^1.0.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"peerDependencies": {
+		"react": "17.x",
+		"react-dom": "17.x"
+	}
+}

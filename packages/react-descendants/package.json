@@ -1,0 +1,37 @@
+{
+	"name": "@chance/react-descendants",
+	"version": "0.1.0",
+	"main": "./dist/react-descendants.js",
+	"module": "./dist/react-descendants.mjs",
+	"types": "./dist/react-descendants.d.ts",
+	"sideEffects": false,
+	"license": "MIT",
+	"files": [
+		"README.md",
+		"LICENSE",
+		"dist/**",
+		"src/**"
+	],
+	"scripts": {
+		"build": "tsup src/react-descendants.tsx --format esm,cjs --dts",
+		"dev": "tsup src/react-descendants.tsx --format esm,cjs --watch --dts",
+		"lint": "TIMING=1 eslint src --fix",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+	},
+	"dependencies": {
+		"@chance/dom": "*",
+		"@chance/react-utils": "*",
+		"@chance/utils": "*",
+		"tiny-warning": "^1.0.3"
+	},
+	"devDependencies": {
+		"eslint": "^8.14.0",
+		"eslint-config-chance": "^1.0.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"peerDependencies": {
+		"react": "17.x",
+		"react-dom": "17.x"
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"extends": "../../tsconfig-react.json",
+	"include": ["src", "test", "examples"],
+	"exclude": ["dist"],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"~": ["../../*"]
+		}
+	}
+}
