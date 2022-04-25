@@ -15,7 +15,7 @@
 		"format": "prettier --write \"**/*.{json,js,jsx,ts,tsx,md}\"",
 		"changeset": "changeset",
 		"release": "turbo run build --filter=docs^... && changeset publish",
-		"version": "changeset version"
+		"version": "changeset version && pnpm install --frozen-lockfile=false"
 	},
 	"dependencies": {
 		"@babel/core": "^7.17.9",
