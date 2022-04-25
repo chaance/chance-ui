@@ -18,8 +18,8 @@
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
 	"dependencies": {
-		"@chance/dom": "*",
-		"@chance/utils": "*",
+		"@chance/dom": "workspace:*",
+		"@chance/utils": "workspace:*",
 		"tiny-warning": "^1.0.3"
 	},
 	"devDependencies": {

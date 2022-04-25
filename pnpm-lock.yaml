@@ -70,11 +70,11 @@ importers:
 
   packages/react-accordion:
     specifiers:
-      '@chance/dom': '*'
-      '@chance/react-descendants': '*'
-      '@chance/react-utils': '*'
-      '@chance/ui-test-utils': '*'
-      '@chance/utils': '*'
+      '@chance/dom': workspace:*
+      '@chance/react-descendants': workspace:*
+      '@chance/react-utils': workspace:*
+      '@chance/ui-test-utils': workspace:*
+      '@chance/utils': workspace:*
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^18.0.0
@@ -95,10 +95,10 @@ importers:
 
   packages/react-descendants:
     specifiers:
-      '@chance/dom': '*'
-      '@chance/react-utils': '*'
-      '@chance/ui-test-utils': '*'
-      '@chance/utils': '*'
+      '@chance/dom': workspace:*
+      '@chance/react-utils': workspace:*
+      '@chance/ui-test-utils': workspace:*
+      '@chance/utils': workspace:*
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^18.0.0
@@ -118,8 +118,8 @@ importers:
 
   packages/react-utils:
     specifiers:
-      '@chance/dom': '*'
-      '@chance/utils': '*'
+      '@chance/dom': workspace:*
+      '@chance/utils': workspace:*
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^18.0.0
@@ -139,9 +139,9 @@ importers:
 
   packages/react-visually-hidden:
     specifiers:
-      '@chance/react-utils': '*'
-      '@chance/ui-test-utils': '*'
-      '@chance/utils': '*'
+      '@chance/react-utils': workspace:*
+      '@chance/ui-test-utils': workspace:*
+      '@chance/utils': workspace:*
       eslint: ^8.14.0
       eslint-config-chance: ^1.0.0
       react: ^18.0.0

@@ -20,11 +20,11 @@
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
 	"dependencies": {
-		"@chance/react-utils": "*",
-		"@chance/utils": "*"
+		"@chance/react-utils": "workspace:*",
+		"@chance/utils": "workspace:*"
 	},
 	"devDependencies": {
-		"@chance/ui-test-utils": "*",
+		"@chance/ui-test-utils": "workspace:*",
 		"eslint": "^8.14.0",
 		"eslint-config-chance": "^1.0.0",
 		"react": "^18.0.0",
