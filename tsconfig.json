@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"extends": "./tsconfig-base.json",
-	"include": ["./types", "./test"],
+	"include": ["./types", "./test", "./scripts"],
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,
