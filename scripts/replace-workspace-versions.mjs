@@ -8,6 +8,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const packagesDir = path.resolve(rootDir, "packages");
 
+main();
+
 async function main() {
 	let packages = await fsp.readdir(packagesDir);
 	let versionMap = await Promise.all(
