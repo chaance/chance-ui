@@ -18,3 +18,7 @@ export function isString(value: any): value is string {
 export function isObject(value: any): value is object {
 	return typeof value === "object" && value != null;
 }
+
+export function isArray(value: any): value is any[] {
+	return Array.isArray(value);
+}
