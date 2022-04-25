@@ -1,8 +1,7 @@
 import * as path from "path";
 import * as fsp from "fs/promises";
+import { spawn } from "child_process";
 import { fileURLToPath } from "url";
-import jsonfile from "jsonfile";
-import prettier from "prettier";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -31,12 +30,14 @@ async function main() {
 					if (!dependencies) {
 						continue;
 					}
-					if (dependencies[packageName]) {
-						let nextVersion = versionMap.find(
-							(m) => m.packageName === packageName
-						)?.version;
-						// TODO: Use CLI flags to force a specific version if needed
-						copy[dependencyType][packageName] = "^" + nextVersion;
+					for (let dependency in dependencies) {
+						let replacement = versionMap.find(
+							(x) => x.packageName === unscopePackageName(dependency)
+						);
+						if (replacement) {
+							// TODO: Use CLI flags for pinned versions
+							copy[dependencyType][dependency] = "^" + replacement.version;
+						}
 					}
 				}
 				return copy;
@@ -49,6 +50,22 @@ async function main() {
 
 /**
  * @param {string} packageName
+ * @returns
+ */
+function scopePackageName(packageName) {
+	return "@chance/" + packageName;
+}
+
+/**
+ * @param {string} packageName
+ * @returns
+ */
+function unscopePackageName(packageName) {
+	return packageName.replace(/^@chance\//, "");
+}
+
+/**
+ * @param {string} packageName
  */
 function packageJson(packageName) {
 	return path.join(packagesDir, packageName, "package.json");
@@ -56,12 +73,12 @@ function packageJson(packageName) {
 
 /**
  * @param {string} packageName
- * @returns {Promise<PackageJson>}
+ * @returns {Promise<string>}
  */
 async function getPackageJsonContents(packageName) {
 	try {
 		let file = packageJson(packageName);
-		return await jsonfile.readFile(file);
+		return await fsp.readFile(file, "utf8");
 	} catch (_) {
 		throw Error(
 			`Could not read package.json for ${packageName}. Check to ensure the package exists.`
@@ -74,7 +91,7 @@ async function getPackageJsonContents(packageName) {
  * @returns {Promise<string>}
  */
 async function getPackageVersion(packageName) {
-	let json = await getPackageJsonContents(packageName);
+	let json = JSON.parse(await getPackageJsonContents(packageName));
 	if (!json.version) {
 		throw Error(
 			`Could not find version for ${packageName}. Check to ensure the package.json has a valid version.`
@@ -89,10 +106,21 @@ async function getPackageVersion(packageName) {
  */
 async function transformPackageJson(packageName, transform) {
 	let json = await getPackageJsonContents(packageName);
-	let output = prettier.format(JSON.stringify(transform(json)), {
-		parser: "json",
+	let transformed = transform(JSON.parse(json));
+	await fsp.writeFile(
+		packageJson(packageName),
+		JSON.stringify(transformed),
+		"utf-8"
+	);
+
+	await new Promise((accept, reject) => {
+		spawn("pnpm", ["prettier", "--write", "**/package.json"], {
+			stdio: "ignore",
+			cwd: rootDir,
+		})
+			.on("error", reject)
+			.on("close", accept);
 	});
-	await jsonfile.writeFile(packageJson(packageName), output);
 }
 
 /**
