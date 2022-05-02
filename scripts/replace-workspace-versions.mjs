@@ -1,5 +1,6 @@
 import * as path from "path";
 import * as fsp from "fs/promises";
+import chalk from "chalk";
 import { spawn } from "child_process";
 import { fileURLToPath } from "url";
 
@@ -51,7 +52,7 @@ async function main() {
 		})
 	);
 
-	console.log("DONE");
+	console.log(chalk.green("\n✅ All package versions updated\n"));
 }
 
 /**
