@@ -24,23 +24,29 @@ async function main() {
 				/** @type {["dependencies", "devDependencies"]} */
 				let dependencyTypes = ["dependencies", "devDependencies"];
 				/** @type {*} */
-				let copy = { ...packageJson };
+				let packageJsonCopy = { ...packageJson };
 				for (const dependencyType of dependencyTypes) {
-					let dependencies = packageJson[dependencyType];
+					let dependencies = packageJsonCopy[dependencyType];
 					if (!dependencies) {
 						continue;
 					}
 					for (let dependency in dependencies) {
+						if (
+							dependencies[dependency] !== "workspace:*" &&
+							dependencies[dependency] !== "*"
+						) {
+							continue;
+						}
 						let replacement = versionMap.find(
 							(x) => x.packageName === unscopePackageName(dependency)
 						);
 						if (replacement) {
 							// TODO: Use CLI flags for pinned versions
-							copy[dependencyType][dependency] = "^" + replacement.version;
+							packageJsonCopy[dependencyType][dependency] = replacement.version;
 						}
 					}
 				}
-				return copy;
+				return packageJsonCopy;
 			});
 		})
 	);
