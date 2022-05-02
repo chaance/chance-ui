@@ -294,6 +294,7 @@ const useAccordionItem = createComponentHook<
 
 	domProps.ref = ref;
 	domProps["data-ui-accordion-item"] = "";
+	domProps["data-index"] = index;
 	domProps["data-state"] = state;
 	domProps["data-disabled"] = disabled ? "" : undefined;
 	domProps["data-read-only"] = readOnly ? "" : undefined;
