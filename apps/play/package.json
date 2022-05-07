@@ -9,8 +9,6 @@
 	},
 	"dependencies": {
 		"@chance/react-accordion": "workspace:*",
-		"@chance/react-descendants": "workspace:*",
-		"@chance/react-resizable": "workspace:*",
 		"@chance/react-visually-hidden": "workspace:*",
 		"react": "^18.1.0",
 		"react-dom": "^18.1.0"
