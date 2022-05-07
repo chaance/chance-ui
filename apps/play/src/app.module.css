@@ -1,0 +1,101 @@
+.app {
+	position: fixed;
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+}
+
+.inner {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.side {
+	height: 100%;
+	resize: horizontal;
+	overflow: auto;
+	min-width: 200px;
+	width: 250px;
+	max-width: calc(100% - 200px);
+}
+
+.sideHeader {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 20px 20px 12px;
+}
+
+.sideHeaderLink {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.searchForm {
+	transition: all 150ms ease-out 0s;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	outline: 0px;
+	position: relative;
+	margin: 0px 20px 1rem;
+}
+
+.searchForm > svg {
+	transition: all 150ms ease-out 0s;
+	position: absolute;
+	display: block;
+	top: 50%;
+	height: 12px;
+	width: 12px;
+	transform: translateY(-50%);
+	z-index: 1;
+	background: transparent;
+	shape-rendering: inherit;
+}
+
+.searchForm > button {
+	border: 0px;
+	margin: 0px;
+	padding: 4px;
+	text-decoration: none;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 1em;
+	cursor: pointer;
+	opacity: 0;
+	transition: all 150ms ease-out 0s;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 2px;
+}
+
+.searchField {
+	appearance: none;
+	border: none;
+	box-sizing: inherit;
+	display: block;
+	outline: none;
+	width: 100%;
+	margin: 0px;
+	background: transparent;
+	padding: 0px px;
+	color: rgb(51, 51, 51);
+	font-size: 13px;
+	line-height: 20px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 20px;
+}
+
+.main {
+	--gap: 10px;
+	flex: 1 1 auto;
+	height: calc(100% - var(--gap) * 2);
+	margin-right: var(--gap);
+	background: #fff;
+	overflow: auto;
+	box-shadow: rgb(0 0 0 / 10%) 0px 1px 5px 0px;
+}
