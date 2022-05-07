@@ -1,0 +1,44 @@
+{
+	"name": "@chance/react-tree-view",
+	"version": "0.0.9",
+	"main": "./dist/react-tree-view.js",
+	"module": "./dist/react-tree-view.mjs",
+	"types": "./dist/react-tree-view.d.ts",
+	"sideEffects": false,
+	"license": "MIT",
+	"files": [
+		"README.md",
+		"LICENSE",
+		"dist/**",
+		"src/**"
+	],
+	"scripts": {
+		"build": "tsup src/react-tree-view.tsx --format esm,cjs --dts",
+		"dev": "tsup src/react-tree-view.tsx --format esm,cjs --watch --dts",
+		"test": "vitest --config ../../vitest.config.ts",
+		"lint": "TIMING=1 eslint src --fix",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+	},
+	"dependencies": {
+		"@chance/dom": "workspace:*",
+		"@chance/react-descendants": "workspace:*",
+		"@chance/react-utils": "workspace:*",
+		"@chance/utils": "workspace:*",
+		"tiny-warning": "^1.0.3"
+	},
+	"devDependencies": {
+		"@chance/ui-test-utils": "workspace:*",
+		"eslint": "^8.14.0",
+		"eslint-config-chance": "^1.0.0",
+		"react": "^18.1.0",
+		"react-dom": "^18.1.0",
+		"typescript": "^4.6.4"
+	},
+	"peerDependencies": {
+		"react": "17.x || 18.x",
+		"react-dom": "17.x || 18.x"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
