@@ -129,16 +129,16 @@ describe("<Accordion />", () => {
 				}
 			});
 
-			it("`data-state` is `open` for the active button element", () => {
-				expect(buttons[0]).toHaveAttribute("data-state", "open");
+			it("`data-state` is `expanded` for the active button element", () => {
+				expect(buttons[0]).toHaveAttribute("data-state", "expanded");
 			});
 
 			it("`data-state` is `collapsed` for the inactive button element", () => {
 				expect(buttons[1]).toHaveAttribute("data-state", "collapsed");
 			});
 
-			it("`data-state` is `open` for the active panel element", () => {
-				expect(panels[0]).toHaveAttribute("data-state", "open");
+			it("`data-state` is `expanded` for the active panel element", () => {
+				expect(panels[0]).toHaveAttribute("data-state", "expanded");
 			});
 
 			it("`data-state` is `collapsed` for the inactive panel element", () => {
@@ -214,7 +214,7 @@ describe("<Accordion />", () => {
 		});
 
 		describe("with a fully collapsible accordion", () => {
-			it("should allow collapsing the open panel", () => {
+			it("should allow collapsing the expanded panel", () => {
 				let { panels, buttons } = renderTestAccordion((props) => (
 					<Accordion {...props} defaultIndex={0} collapsible />
 				));
