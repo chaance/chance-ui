@@ -13,7 +13,7 @@ env:
 jobs:
   release:
     name: Release
-		if: ${{ github.repository == 'chaance/chance-ui' }}
+    if: ${{ github.repository == 'chaance/chance-ui' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
