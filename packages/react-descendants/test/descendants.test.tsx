@@ -36,7 +36,7 @@ describe("React Descendants", () => {
 			...props
 		}: React.ComponentPropsWithoutRef<"li">) {
 			let ref = React.useRef<HTMLElement | null>(null);
-			let index = useDescendant("ListItem", {
+			let { index } = useDescendant("ListItem", {
 				ref,
 			});
 			return (

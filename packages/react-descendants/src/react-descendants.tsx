@@ -39,7 +39,7 @@ type UseDescendantsHook<
 type UseDescendantHook<
 	O extends {} = {},
 	T extends O & Descendant = O & Descendant
-> = (childName: string, descendant: T) => number;
+> = (childName: string, descendant: T) => WithIndex<{}>;
 
 /**
  * Creates new context for registering descendants and returns a tuple with:
@@ -121,7 +121,8 @@ function createDescendantContext<
 	};
 
 	function useDescendants(childName: string) {
-		return useDescendantsContext(childName).descendants;
+		let ctx = useDescendantsContext(childName);
+		return ctx.descendants;
 	}
 
 	/**
@@ -147,7 +148,7 @@ function createDescendantContext<
 	 * of composed descendants for keyboard navigation. However, in the few cases
 	 * where this is not the case, we can require an explicit index from the app.
 	 */
-	function useDescendant(childName: string, descendant: T) {
+	function useDescendant(childName: string, descendant: T): WithIndex<{}> {
 		let { register, descendants } = useDescendantsContext(childName);
 		let memoed = React.useMemo(
 			() => descendant,
@@ -159,7 +160,10 @@ function createDescendantContext<
 		}, [register, memoed]);
 
 		// Return the index of the item
-		return descendants.find((item) => item.ref === descendant.ref)?.index ?? -1;
+		return {
+			index:
+				descendants.find((item) => item.ref === descendant.ref)?.index ?? -1,
+		};
 	}
 
 	return [Provider, useDescendants, useDescendant];
