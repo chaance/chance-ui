@@ -1,6 +1,7 @@
 export * from "./clone-valid-element";
 export * from "./compose-refs";
 export * from "./component";
+export * from "./use-console-effect";
 export * from "./context";
 export * from "./use-constant";
 export * from "./use-controlled-state";
