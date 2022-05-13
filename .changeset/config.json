@@ -2,7 +2,7 @@
 	"$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
 	"changelog": ["@changesets/cli/changelog", { "repo": "chaance/chance-ui" }],
 	"commit": false,
-	"linked": [],
+	"linked": [["@chance/react-descendants", "@chance/react-accordion"]],
 	"access": "public",
 	"baseBranch": "main",
 	"ignore": [],
