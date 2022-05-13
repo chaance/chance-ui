@@ -1,5 +1,13 @@
 # @chance/react-utils
 
+## 0.0.11
+
+### Patch Changes
+
+- 23b5b48: Added console.debug to possible types for the useConsoleEffect hook
+- Updated dependencies [23b5b48]
+  - @chance/dom@0.0.10
+
 ## 0.0.10
 
 ### Patch Changes
