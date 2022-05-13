@@ -1,5 +1,5 @@
 import * as React from "react";
-import { vi } from "vitest";
+import { vi, describe, beforeEach, it, expect } from "vitest";
 import { render, fireEvent } from "@chance/ui-test-utils";
 import {
 	Accordion,

@@ -32,9 +32,9 @@ const [AccordionProvider, useAccordionCtx] =
 const [AccordionItemProvider, useAccordionItemCtx] =
 	createContext<AccordionItemContextValue>("AccordionItem");
 
-const STATE_OPEN = "open";
+const STATE_EXPANDED = "expanded";
 const STATE_COLLAPSED = "collapsed";
-type AccordionState = typeof STATE_OPEN | typeof STATE_COLLAPSED;
+type AccordionItemState = typeof STATE_EXPANDED | typeof STATE_COLLAPSED;
 
 const ORIENTATION_VERTICAL = "vertical";
 const ORIENTATION_HORIZONTAL = "horizontal";
@@ -60,7 +60,7 @@ const useAccordion = createComponentHook<
 
 	let id = useId(props.id);
 
-	let [openPanels, setOpenPanels] = useControlledState({
+	let [expandedItems, setExpandedItems] = useControlledState({
 		controlledValue: controlledIndex,
 		defaultValue: () => {
 			if (defaultIndex != null) {
@@ -83,14 +83,14 @@ const useAccordion = createComponentHook<
 			// Otherwise the first panel will be our default.
 			return multiple ? [0] : 0;
 		},
-		calledFrom: "Tabs",
+		calledFrom: "Accordion",
 	});
 
 	let onSelectPanel = React.useCallback(
 		(index: number) => {
 			onChange && onChange(index);
 
-			setOpenPanels((prevOpenPanels) => {
+			setExpandedItems((prevExpandedItems) => {
 				/*
 				 * If we're dealing with an uncontrolled component, the index arg
 				 * in selectChange will always be a number rather than an array.
@@ -99,28 +99,28 @@ const useAccordion = createComponentHook<
 				// multiple allowed
 				if (multiple) {
 					// state will always be an array here
-					prevOpenPanels = prevOpenPanels as number[];
+					prevExpandedItems = prevExpandedItems as number[];
 					if (
-						// User is clicking on an already-open button
-						prevOpenPanels.includes(index as number)
+						// User is clicking on an already-open item
+						prevExpandedItems.includes(index as number)
 					) {
-						// Other panels are open OR accordion is allowed to collapse
-						if (prevOpenPanels.length > 1 || collapsible) {
+						// Other items are expanded OR accordion is allowed to collapse
+						if (prevExpandedItems.length > 1 || collapsible) {
 							// Close the panel by filtering it from the array
-							return prevOpenPanels.filter((i) => i !== index);
+							return prevExpandedItems.filter((i) => i !== index);
 						}
 					} else {
 						// Open the panel by adding it to the array.
-						return [...prevOpenPanels, index].sort();
+						return [...prevExpandedItems, index].sort();
 					}
 				} else {
-					prevOpenPanels = prevOpenPanels as number;
-					return prevOpenPanels === index && collapsible ? -1 : index;
+					prevExpandedItems = prevExpandedItems as number;
+					return prevExpandedItems === index && collapsible ? -1 : index;
 				}
-				return prevOpenPanels;
+				return prevExpandedItems;
 			});
 		},
-		[collapsible, multiple, onChange, setOpenPanels]
+		[collapsible, multiple, onChange, setExpandedItems]
 	);
 
 	domProps["data-ui-accordion"] = "";
@@ -129,7 +129,7 @@ const useAccordion = createComponentHook<
 		domProps,
 		{
 			accordionId: id,
-			openPanels,
+			expandedItems,
 			onSelectPanel: readOnly ? noop : onSelectPanel,
 			readOnly,
 			keyboardNavigable,
@@ -175,10 +175,10 @@ Accordion.displayName = "Accordion";
  */
 interface AccordionProps {
 	/**
-	 * Whether or not all panels of an uncontrolled accordion can be toggled
-	 * to a closed state. By default, an uncontrolled accordion will have an open
-	 * panel at all times, meaning a panel can only be closed if the user opens
-	 * another panel. This prop allows the user to collapse all open panels.
+	 * Whether or not all panels of an uncontrolled accordion can be toggled to a
+	 * closed state. By default, an uncontrolled accordion will have an expanded
+	 * panel at all times, meaning a panel can only be closed if the user expands
+	 * another panel. This prop allows the user to collapse all expanded panels.
 	 *
 	 * It's important to note that this prop has no impact on controlled
 	 * components, since the state of any given accordion panel is managed solely
@@ -186,22 +186,22 @@ interface AccordionProps {
 	 */
 	collapsible?: boolean;
 	/**
-	 * A default value for the open panel's index or indices in an uncontrolled
-	 * accordion component when it is initially rendered.
+	 * A default value for the expanded panel's index or indices in an
+	 * uncontrolled accordion component when it is initially rendered.
 	 *
 	 * @see Docs https://TODO.com
 	 */
 	defaultIndex?: AccordionIndex;
 	/**
-	 * The index or array of indices for open accordion panels. The `index` props
-	 * should be used along with `onChange` to create controlled accordion
+	 * The index or array of indices for expanded accordion panels. The `index`
+	 * props should be used along with `onChange` to create controlled accordion
 	 * components.
 	 *
 	 * @see Docs https://TODO.com
 	 */
 	index?: AccordionIndex;
 	/**
-	 * The callback that is fired when an accordion item's open state is changed.
+	 * The callback that is fired when an accordion item's state is changed.
 	 *
 	 * @see Docs https://TODO.com
 	 */
@@ -221,9 +221,9 @@ interface AccordionProps {
 	 */
 	readOnly?: boolean;
 	/**
-	 * Whether or not multiple panels in an uncontrolled accordion can be opened
-	 * at the same time. By default, when a user opens a new panel, the previously
-	 * opened panel will close. This prop prevents that behavior.
+	 * Whether or not multiple panels in an uncontrolled accordion can be expanded
+	 * at the same time. By default, when a user expands a new panel, the
+	 * previously expanded panel will close. This prop prevents that behavior.
 	 *
 	 * It's important to note that this prop has no impact on controlled
 	 * components, since the state of any given accordion panel is managed solely
@@ -270,12 +270,12 @@ const useAccordionItem = createComponentHook<
 >((props) => {
 	let { disabled = false, index: indexProp, ...domProps } = props;
 
-	let { accordionId, openPanels, readOnly } = useAccordionCtx("AccordionItem");
+	let { accordionId, expandedItems, readOnly } =
+		useAccordionCtx("AccordionItem");
 	let buttonRef: ButtonRef = React.useRef(null);
 
-	// TODO
 	let ownRef = React.useRef<HTMLElement | null>(null);
-	let index = useDescendant("AccordionItem", {
+	let { index } = useDescendant("AccordionItem", {
 		ref: ownRef,
 		disabled,
 		buttonRef,
@@ -288,9 +288,9 @@ const useAccordionItem = createComponentHook<
 	let buttonId = makeId("button", itemId);
 
 	const state =
-		(Array.isArray(openPanels)
-			? openPanels.includes(index) && STATE_OPEN
-			: openPanels === index && STATE_OPEN) || STATE_COLLAPSED;
+		(Array.isArray(expandedItems)
+			? expandedItems.includes(index) && STATE_EXPANDED
+			: expandedItems === index && STATE_EXPANDED) || STATE_COLLAPSED;
 
 	domProps.ref = ref;
 	domProps["data-ui-accordion-item"] = "";
@@ -519,7 +519,7 @@ const useAccordionButton = createComponentHook<"button", AccordionButtonProps>(
 				// `true`. If the panel is not visible, `aria-expanded` is set to
 				// `false`.
 				// https://www.w3.org/TR/wai-aria-practices-1.2/#accordion
-				"aria-expanded": state === STATE_OPEN,
+				"aria-expanded": state === STATE_EXPANDED,
 
 				tabIndex: disabled ? -1 : tabIndex,
 
@@ -654,7 +654,7 @@ type AccordionIndex = number | number[];
 
 interface AccordionContextValue {
 	accordionId: string | null;
-	openPanels: AccordionIndex;
+	expandedItems: AccordionIndex;
 	onSelectPanel(index: AccordionIndex): void;
 	readOnly: boolean;
 	keyboardNavigable: boolean;
@@ -669,7 +669,7 @@ interface AccordionItemContextValue {
 	itemId: string;
 	buttonRef: ButtonRef;
 	panelId: string;
-	state: AccordionState;
+	state: AccordionItemState;
 }
 
 export type {
