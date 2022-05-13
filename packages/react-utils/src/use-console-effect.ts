@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export default function useConsoleEffect(
-	method: "log" | "warn" | "error",
+	method: "log" | "warn" | "error" | "info",
 	...args: any[]
 ) {
 	useEffect(() => {

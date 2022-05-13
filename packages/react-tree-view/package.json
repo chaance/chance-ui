@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-tree-view",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"main": "./dist/react-tree-view.js",
 	"module": "./dist/react-tree-view.mjs",
 	"types": "./dist/react-tree-view.d.ts",
