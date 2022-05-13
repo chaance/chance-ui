@@ -1,5 +1,5 @@
 ---
-"@chance/react-utils": minor
+"@chance/react-utils": patch
 "@chance/dom": patch
 ---
 
