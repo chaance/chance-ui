@@ -102,3 +102,7 @@ export function isRightClick(
 		? (nativeEvent as any).button === 2
 		: false;
 }
+
+export function log() {
+	console.log("log");
+}
