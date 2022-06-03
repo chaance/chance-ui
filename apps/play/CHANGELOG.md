@@ -1,5 +1,12 @@
 # @chance/play
 
+## 0.0.3-pre.0
+
+### Patch Changes
+
+- @chance/react-accordion@0.0.12-pre.0
+- @chance/react-visually-hidden@0.0.12-pre.0
+
 ## 0.0.2
 
 ### Patch Changes

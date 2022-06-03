@@ -13,5 +13,8 @@
     "@chance/ui-test-utils": "0.0.9",
     "@chance/utils": "0.0.9"
   },
-  "changesets": []
+  "changesets": [
+    "cuddly-bikes-sip",
+    "tricky-numbers-beg"
+  ]
 }
