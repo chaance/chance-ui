@@ -1,5 +1,14 @@
 # @chance/play
 
+## 0.0.3
+
+### Patch Changes
+
+- 453d3f9:
+- Updated dependencies [453d3f9]
+  - @chance/react-accordion@0.0.12
+  - @chance/react-visually-hidden@0.0.12
+
 ## 0.0.3-pre.1
 
 ### Patch Changes
