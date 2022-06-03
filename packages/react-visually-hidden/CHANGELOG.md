@@ -1,5 +1,13 @@
 # @chance/react-visually-hidden
 
+## 0.0.12-pre.1
+
+### Patch Changes
+
+- 453d3f9:
+- Updated dependencies [453d3f9]
+  - @chance/react-utils@0.1.0-pre.1
+
 ## 0.0.12-pre.0
 
 ### Patch Changes
