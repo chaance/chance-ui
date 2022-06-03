@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-accordion",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"main": "./dist/react-accordion.js",
 	"module": "./dist/react-accordion.mjs",
 	"types": "./dist/react-accordion.d.ts",
