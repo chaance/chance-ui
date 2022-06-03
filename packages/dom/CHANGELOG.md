@@ -1,5 +1,11 @@
 # @chance/dom
 
+## 0.0.11-pre.1
+
+### Patch Changes
+
+- 453d3f9:
+
 ## 0.0.11-pre.0
 
 ### Patch Changes

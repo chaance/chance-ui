@@ -1,5 +1,15 @@
 # @chance/react-tree-view
 
+## 0.0.12-pre.1
+
+### Patch Changes
+
+- 453d3f9:
+- Updated dependencies [453d3f9]
+  - @chance/dom@0.0.11-pre.1
+  - @chance/react-descendants@0.0.12-pre.1
+  - @chance/react-utils@0.1.0-pre.1
+
 ## 0.0.12-pre.0
 
 ### Patch Changes
