@@ -39,6 +39,9 @@
 		"react-dom": "17.x || 18.x"
 	},
 	"publishConfig": {
-		"access": "public"
+		"access": "public",
+		"main": "dist/react-tree-view.js",
+		"module": "dist/react-tree-view.mjs",
+		"types": "dist/react-tree-view.d.ts"
 	}
 }

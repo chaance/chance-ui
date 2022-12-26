@@ -38,10 +38,11 @@ jobs:
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
       - name: Prepare for build
-        run: |
-          node scripts/copy-license.mjs
-          node scripts/replace-workspace-versions.mjs
-          node scripts/replace-package-entrypoints.mjs
+        run: node scripts/copy-license.mjs
+        # run: |
+        #   node scripts/copy-license.mjs
+        #   node scripts/replace-workspace-versions.mjs
+        #   node scripts/replace-package-entrypoints.mjs
 
       - name: Build
         run: pnpm build --filter "./packages/**"
