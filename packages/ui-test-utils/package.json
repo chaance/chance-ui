@@ -1,9 +1,9 @@
 {
 	"name": "@chance/ui-test-utils",
 	"version": "0.0.9",
-	"main": "./dist/test-utils.js",
-	"module": "./dist/test-utils.mjs",
-	"types": "./dist/test-utils.d.ts",
+	"main": "./dist/ui-test-utils.js",
+	"module": "./dist/ui-test-utils.mjs",
+	"types": "./dist/ui-test-utils.d.ts",
 	"files": [
 		"README.md",
 		"LICENSE",

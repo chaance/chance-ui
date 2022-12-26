@@ -35,6 +35,11 @@ async function main() {
 					return packageJson;
 				}
 
+				// skip `types` package; source and dist are the same
+				if (packageName === "types") {
+					return packageJson;
+				}
+
 				let newEntrypoints = IS_DEV
 					? getDevEntrypoints(packageName)
 					: getPublishedEntrypoints(packageName);
