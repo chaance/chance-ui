@@ -1,5 +1,14 @@
 # @chance/react-descendants
 
+## 0.0.12
+
+### Patch Changes
+
+- Updated dependencies [3ef02b0]
+- Updated dependencies [2a3bf73]
+  - @chance/dom@0.0.11
+  - @chance/react-utils@0.1.0
+
 ## 0.0.11
 
 ### Patch Changes
