@@ -12,8 +12,8 @@
 	],
 	"license": "MIT",
 	"scripts": {
-		"build": "tsup src/test-utils.tsx --format esm,cjs --dts",
-		"dev": "tsup src/test-utils.tsx --format esm,cjs --watch --dts",
+		"build": "tsup src/ui-test-utils.tsx --format esm,cjs --dts",
+		"dev": "tsup src/ui-test-utils.tsx --format esm,cjs --watch --dts",
 		"lint": "TIMING=1 eslint src --fix",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
