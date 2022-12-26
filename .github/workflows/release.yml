@@ -58,7 +58,7 @@ jobs:
           version: pnpm run version
           commit: "chore: Update versions"
           title: "chore: Update versions"
-          publish: pnpm --filter="\!./apps/**" publish --dry-run
+          publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
