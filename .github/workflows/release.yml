@@ -59,7 +59,7 @@ jobs:
           version: pnpm run version
           commit: "chore: Update versions"
           title: "chore: Update versions"
-          publish: pnpm release
+          publish: pnpm publish --filter "./packages/**"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
