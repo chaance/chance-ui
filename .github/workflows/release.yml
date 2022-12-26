@@ -29,10 +29,14 @@ jobs:
         with:
           node-version: 16.x
 
+      - name: Prepare for pnpm
+        run: |
+          echo "node-linker=pnp" >> ~/.npmrc
+          echo "symlink=false" >> ~/.npmrc
+
       - name: Install with pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7.4.1
           run_install: |
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
