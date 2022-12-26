@@ -1,5 +1,6 @@
 import * as path from "path";
 import * as fsp from "fs/promises";
+import chalk from "chalk";
 import { performance } from "perf_hooks";
 
 const rootDir = process.cwd();
@@ -22,9 +23,5 @@ async function main() {
 		await fsp.writeFile(licenseFilePath, licenseContents);
 	}
 
-	console.log(
-		`✨ Copied LICENSE to all packages in ${
-			Math.round((performance.now() - start) * 100) / 100
-		}ms`
-	);
+	console.log(chalk.green("✅ Copied LICENSE to all packages"));
 }

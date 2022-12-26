@@ -57,7 +57,7 @@ async function main() {
 		})
 	);
 
-	console.log(chalk.green("\n✅ All entrypoints updated\n"));
+	console.log(chalk.green("✅ All entrypoints updated\n"));
 }
 
 /**
