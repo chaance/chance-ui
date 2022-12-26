@@ -43,6 +43,7 @@
 		"axe-core": "^4.6.1",
 		"chalk": "^5.2.0",
 		"eslint": "^8.30.0",
+		"eslint-config-chance": "^2.0.2",
 		"eslint-import-resolver-node": "^0.3.6",
 		"eslint-import-resolver-typescript": "^3.5.2",
 		"eslint-plugin-import": "^2.26.0",
