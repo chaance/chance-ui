@@ -1,5 +1,4 @@
 ---
-"@chance/play": patch
 "@chance/dom": patch
 "@chance/react-accordion": patch
 "@chance/react-descendants": patch
