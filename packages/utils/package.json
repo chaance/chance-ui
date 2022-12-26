@@ -1,6 +1,6 @@
 {
 	"name": "@chance/utils",
-	"version": "0.0.9",
+	"version": "0.0.12",
 	"main": "./src/utils.ts",
 	"module": "./src/utils.ts",
 	"types": "./src/utils.ts",

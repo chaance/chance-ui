@@ -1,6 +1,6 @@
 {
 	"name": "@chance/ui-types",
-	"version": "0.0.9",
+	"version": "0.0.12",
 	"main": "./index.js",
 	"types": "./types.d.ts",
 	"typeScriptVersion": "4.3.0",
