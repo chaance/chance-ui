@@ -1,6 +1,6 @@
 {
 	"name": "@chance/ui-test-utils",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"main": "./src/ui-test-utils.tsx",
 	"module": "./src/ui-test-utils.tsx",
 	"types": "./src/ui-test-utils.tsx",
