@@ -1,7 +1,7 @@
 {
-	"name": "@chance/types",
+	"name": "@chance/ui-types",
 	"version": "0.0.9",
-	"main": "",
+	"main": "./index.js",
 	"types": "./types.d.ts",
 	"typeScriptVersion": "4.3.0",
 	"sideEffects": false,
