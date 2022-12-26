@@ -84,7 +84,7 @@ export function createComponentHook<
 		let copy = {} as typeof htmlProps;
 		for (let prop in htmlProps) {
 			if (hasOwn(htmlProps, prop) && htmlProps[prop] !== undefined) {
-				copy[prop] = htmlProps[prop] as any;
+				(copy as any)[prop] = htmlProps[prop] as any;
 			}
 		}
 		return [copy, ctx];
