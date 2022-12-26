@@ -1,9 +1,9 @@
 {
 	"name": "@chance/react-accordion",
 	"version": "0.0.11",
-	"main": "./dist/react-accordion.js",
-	"module": "./dist/react-accordion.mjs",
-	"types": "./dist/react-accordion.d.ts",
+	"main": "./src/react-accordion.tsx",
+	"module": "./src/react-accordion.tsx",
+	"types": "./src/react-accordion.tsx",
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [

@@ -1,9 +1,9 @@
 {
 	"name": "@chance/react-descendants",
 	"version": "0.0.11",
-	"main": "./dist/react-descendants.js",
-	"module": "./dist/react-descendants.mjs",
-	"types": "./dist/react-descendants.d.ts",
+	"main": "./src/react-descendants.tsx",
+	"module": "./src/react-descendants.tsx",
+	"types": "./src/react-descendants.tsx",
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [

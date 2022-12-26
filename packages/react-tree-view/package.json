@@ -1,9 +1,9 @@
 {
 	"name": "@chance/react-tree-view",
 	"version": "0.0.11",
-	"main": "./dist/react-tree-view.js",
-	"module": "./dist/react-tree-view.mjs",
-	"types": "./dist/react-tree-view.d.ts",
+	"main": "./src/react-tree-view.tsx",
+	"module": "./src/react-tree-view.tsx",
+	"types": "./src/react-tree-view.tsx",
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [

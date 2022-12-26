@@ -1,9 +1,9 @@
 {
 	"name": "@chance/dom",
 	"version": "0.0.10",
-	"main": "./dist/dom.js",
-	"module": "./dist/dom.mjs",
-	"types": "./dist/dom.d.ts",
+	"main": "./src/dom.ts",
+	"module": "./src/dom.ts",
+	"types": "./src/dom.ts",
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [

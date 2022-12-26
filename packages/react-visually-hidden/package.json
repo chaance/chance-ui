@@ -1,9 +1,9 @@
 {
 	"name": "@chance/react-visually-hidden",
 	"version": "0.0.11",
-	"main": "./dist/react-visually-hidden.js",
-	"module": "./dist/react-visually-hidden.mjs",
-	"types": "./dist/react-visually-hidden.d.ts",
+	"main": "./src/react-visually-hidden.tsx",
+	"module": "./src/react-visually-hidden.tsx",
+	"types": "./src/react-visually-hidden.tsx",
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [

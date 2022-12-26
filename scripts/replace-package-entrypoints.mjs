@@ -12,6 +12,9 @@ const IS_DEV = args.includes("--dev");
 
 main();
 
+// skip packages where source and dist are the same file
+const SKIPPED_PACKAGES = ["types"];
+
 async function main() {
 	let packages = await fsp.readdir(packagesDir);
 	/** @type {Map<string, Entrypoints>} */
@@ -28,33 +31,33 @@ async function main() {
 	}, new Map());
 
 	await Promise.all(
-		packages.map(async (packageName) => {
-			await transformPackageJson(packageName, (packageJson) => {
-				let entrypoints = entrypointMap.get(packageName);
-				if (!entrypoints) {
-					return packageJson;
-				}
-
-				// skip `types` package; source and dist are the same
-				if (packageName === "types") {
-					return packageJson;
-				}
-
-				let newEntrypoints = IS_DEV
-					? getDevEntrypoints(packageName)
-					: getPublishedEntrypoints(packageName);
-
-				/** @type {typeof packageJson} */
-				let packageJsonCopy = { ...packageJson };
-				for (let [entrypointType, entrypoint] of Object.entries(entrypoints)) {
-					if (entrypoint && entrypointType in newEntrypoints) {
-						// @ts-expect-error
-						packageJsonCopy[entrypointType] = newEntrypoints[entrypointType];
+		packages
+			.filter((packageName) => !SKIPPED_PACKAGES.includes(packageName))
+			.map(async (packageName) => {
+				let sourceType = await detectSourceType(packageName);
+				await transformPackageJson(packageName, (packageJson) => {
+					let entrypoints = entrypointMap.get(packageName);
+					if (!entrypoints) {
+						return packageJson;
 					}
-				}
-				return packageJsonCopy;
-			});
-		})
+
+					let newEntrypoints = IS_DEV
+						? getDevEntrypoints(packageName, sourceType)
+						: getPublishedEntrypoints(packageName);
+
+					/** @type {typeof packageJson} */
+					let packageJsonCopy = { ...packageJson };
+					for (let [entrypointType, entrypoint] of Object.entries(
+						entrypoints
+					)) {
+						if (entrypoint && entrypointType in newEntrypoints) {
+							// @ts-expect-error
+							packageJsonCopy[entrypointType] = newEntrypoints[entrypointType];
+						}
+					}
+					return packageJsonCopy;
+				});
+			})
 	);
 
 	console.log(chalk.green("✅ All entrypoints updated\n"));
@@ -120,12 +123,29 @@ async function transformPackageJson(packageName, transform) {
 
 /**
  * @param {string} packageName
+ * @returns {Promise<SourceFileType>}
  */
-function getDevEntrypoints(packageName) {
+async function detectSourceType(packageName) {
+	let packageSrcDir = path.join(packagesDir, packageName, "src");
+	try {
+		let dirContents = await fsp.readdir(packageSrcDir);
+		if (dirContents.includes(`${packageName}.ts`)) return "ts";
+		if (dirContents.includes(`${packageName}.tsx`)) return "tsx";
+		if (dirContents.includes(`${packageName}.js`)) return "js";
+		if (dirContents.includes(`${packageName}.jsx`)) return "jsx";
+	} catch (_) {}
+	throw Error(`Could not detect source type for ${packageName}`);
+}
+
+/**
+ * @param {string} packageName
+ * @param {SourceFileType} sourceType
+ */
+function getDevEntrypoints(packageName, sourceType) {
 	return {
-		main: `./src/${packageName}.ts`,
-		module: `./src/${packageName}.ts`,
-		types: `./src/${packageName}.ts`,
+		main: `./src/${packageName}.${sourceType}`,
+		module: `./src/${packageName}.${sourceType}`,
+		types: `./src/${packageName}.${sourceType}`,
 	};
 }
 
@@ -142,6 +162,10 @@ function getPublishedEntrypoints(packageName) {
 
 /**
  * @typedef {import('type-fest').PackageJson} PackageJson
+ */
+
+/**
+ * @typedef {"ts" | "tsx" | "js" | "jsx"} SourceFileType
  */
 
 /**

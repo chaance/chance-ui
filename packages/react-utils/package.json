@@ -1,9 +1,9 @@
 {
 	"name": "@chance/react-utils",
 	"version": "0.0.11",
-	"main": "./dist/react-utils.js",
-	"module": "./dist/react-utils.mjs",
-	"types": "./dist/react-utils.d.ts",
+	"main": "./src/react-utils.ts",
+	"module": "./src/react-utils.ts",
+	"types": "./src/react-utils.ts",
 	"files": [
 		"README.md",
 		"LICENSE",
