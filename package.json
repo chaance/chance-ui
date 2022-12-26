@@ -8,7 +8,7 @@
 	],
 	"scripts": {
 		"postinstall": "manypkg check",
-		"build": "node scripts/copy-license.mjs && turbo run build",
+		"build": "turbo run build",
 		"dev": "turbo run dev --no-cache --parallel --continue",
 		"start": "start-storybook -p 9001 -c .storybook --ci",
 		"lint": "turbo run lint",
@@ -16,8 +16,7 @@
 		"clean": "turbo run clean && rm -rf node_modules",
 		"format": "prettier --write \"**/*.{json,js,jsx,ts,tsx,md}\"",
 		"changeset": "changeset",
-		"prerelease": "pnpm build -- --filter=docs^... && node scripts/replace-workspace-versions.mjs",
-		"release": "pnpm run prerelease && changeset publish",
+		"release": "changeset publish",
 		"version": "changeset version"
 	},
 	"dependencies": {
