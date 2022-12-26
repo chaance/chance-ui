@@ -1,6 +1,6 @@
 {
 	"name": "@chance/react-accordion",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"main": "./src/react-accordion.tsx",
 	"module": "./src/react-accordion.tsx",
 	"types": "./src/react-accordion.tsx",
