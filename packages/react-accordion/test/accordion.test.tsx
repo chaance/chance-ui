@@ -107,25 +107,31 @@ describe("<Accordion />", () => {
 				panels = rendered.panels;
 			});
 
-			it("`data-ui-accordion` is present on the wrapper element", () => {
-				expect(wrapper).toHaveAttribute("data-ui-accordion");
+			it("`data-chance-ui-comp=accordion` is present on the wrapper element", () => {
+				expect(wrapper).toHaveAttribute("data-chance-ui-comp", "accordion");
 			});
 
-			it("`data-ui-accordion-item` is present on the item elements", () => {
+			it("`data-chance-ui-comp=accordion-item` is present on the item elements", () => {
 				for (let item of items) {
-					expect(item).toHaveAttribute("data-ui-accordion-item");
+					expect(item).toHaveAttribute("data-chance-ui-comp", "accordion-item");
 				}
 			});
 
-			it("`data-ui-accordion-button` is present on the button elements", () => {
+			it("`data-chance-ui-comp=accordion-button` is present on the button elements", () => {
 				for (let button of buttons) {
-					expect(button).toHaveAttribute("data-ui-accordion-button");
+					expect(button).toHaveAttribute(
+						"data-chance-ui-comp",
+						"accordion-button"
+					);
 				}
 			});
 
-			it("`data-ui-accordion-panel` is present on the panel elements", () => {
+			it("`data-chance-ui-comp=accordion-panel` is present on the panel elements", () => {
 				for (let panel of panels) {
-					expect(panel).toHaveAttribute("data-ui-accordion-panel");
+					expect(panel).toHaveAttribute(
+						"data-chance-ui-comp",
+						"accordion-panel"
+					);
 				}
 			});
 

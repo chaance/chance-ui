@@ -123,7 +123,7 @@ const useAccordion = createComponentHook<
 		[collapsible, multiple, onChange, setExpandedItems]
 	);
 
-	domProps["data-ui-accordion"] = "";
+	domProps["data-chance-ui-comp"] = "accordion";
 
 	return [
 		domProps,
@@ -293,7 +293,7 @@ const useAccordionItem = createComponentHook<
 			: expandedItems === index && STATE_EXPANDED) || STATE_COLLAPSED;
 
 	domProps.ref = ref;
-	domProps["data-ui-accordion-item"] = "";
+	domProps["data-chance-ui-comp"] = "accordion-item";
 	domProps["data-index"] = index;
 	domProps["data-state"] = state;
 	domProps["data-disabled"] = disabled ? "" : undefined;
@@ -526,7 +526,7 @@ const useAccordionButton = createComponentHook<"button", AccordionButtonProps>(
 				...domProps,
 
 				ref,
-				"data-ui-accordion-button": "",
+				"data-chance-ui-comp": "accordion-button",
 				"data-state": state,
 
 				// If the accordion panel associated with an accordion header is
@@ -608,7 +608,7 @@ const useAccordionPanel = createComponentHook<"div", AccordionPanelProps>(
 
 				...props,
 
-				"data-ui-accordion-panel": "",
+				"data-chance-ui-comp": "accordion-panel",
 				"data-disabled": disabled || undefined,
 				"data-state": state,
 				id: panelId,
