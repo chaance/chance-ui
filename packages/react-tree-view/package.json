@@ -1,9 +1,17 @@
 {
 	"name": "@chance/react-tree-view",
 	"version": "0.0.13",
-	"main": "./src/react-tree-view.tsx",
 	"module": "./src/react-tree-view.tsx",
+	"main": "./src/react-tree-view.tsx",
 	"types": "./src/react-tree-view.tsx",
+	"exports": {
+		".": {
+			"import": "./src/react-tree-view.tsx",
+			"require": "./src/react-tree-view.tsx",
+			"types": "./src/react-tree-view.tsx"
+		},
+		"./react-tree-view.css": "./src/react-tree-view.css"
+	},
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [
@@ -13,8 +21,9 @@
 		"src/**"
 	],
 	"scripts": {
-		"build": "tsup src/react-tree-view.tsx --format esm,cjs --dts",
-		"dev": "tsup src/react-tree-view.tsx --format esm,cjs --watch --dts",
+		"build": "pnpm build:css && tsup src/react-tree-view.tsx --format esm,cjs --dts",
+		"dev": "pnpm build:css && tsup src/react-tree-view.tsx --format esm,cjs --watch --dts",
+		"build:css": "lightningcss --nesting --bundle --targets '>= 0.25%' --sourcemap src/react-tree-view.css -o dist/react-tree-view.css",
 		"test": "vitest --config ../../vitest.config.ts",
 		"lint": "TIMING=1 eslint src --fix",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
@@ -30,6 +39,8 @@
 		"@chance/ui-test-utils": "workspace:*",
 		"eslint": "^8.30.0",
 		"eslint-config-chance": "^2.0.2",
+		"lightningcss": "^1.17.1",
+		"lightningcss-cli": "^1.17.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"typescript": "^4.9.4"
@@ -40,8 +51,16 @@
 	},
 	"publishConfig": {
 		"access": "public",
-		"main": "dist/react-tree-view.js",
 		"module": "dist/react-tree-view.mjs",
-		"types": "dist/react-tree-view.d.ts"
+		"main": "dist/react-tree-view.js",
+		"types": "dist/react-tree-view.d.ts",
+		"exports": {
+			".": {
+				"import": "./dist/react-tree-view.mjs",
+				"require": "./dist/react-tree-view.js",
+				"types": "./dist/react-tree-view.d.ts"
+			},
+			"./react-tree-view.css": "./dist/react-tree-view.css"
+		}
 	}
 }

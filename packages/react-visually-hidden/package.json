@@ -1,9 +1,17 @@
 {
 	"name": "@chance/react-visually-hidden",
 	"version": "0.0.13",
-	"main": "./src/react-visually-hidden.tsx",
 	"module": "./src/react-visually-hidden.tsx",
+	"main": "./src/react-visually-hidden.tsx",
 	"types": "./src/react-visually-hidden.tsx",
+	"exports": {
+		".": {
+			"import": "./src/react-visually-hidden.tsx",
+			"require": "./src/react-visually-hidden.tsx",
+			"types": "./src/react-visually-hidden.tsx"
+		},
+		"./react-visually-hidden.css": "./src/react-visually-hidden.css"
+	},
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [
@@ -13,8 +21,9 @@
 		"src/**"
 	],
 	"scripts": {
-		"build": "tsup src/react-visually-hidden.tsx --format esm,cjs --dts",
-		"dev": "tsup src/react-visually-hidden.tsx --format esm,cjs --watch --dts",
+		"build": "pnpm build:css && tsup src/react-visually-hidden.tsx --format esm,cjs --dts",
+		"dev": "pnpm build:css && tsup src/react-visually-hidden.tsx --format esm,cjs --watch --dts",
+		"build:css": "lightningcss --nesting --bundle --targets '>= 0.25%' --sourcemap src/react-visually-hidden.css -o dist/react-visually-hidden.css",
 		"test": "vitest --config ../../vitest.config.ts",
 		"lint": "TIMING=1 eslint src --fix",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
@@ -27,6 +36,8 @@
 		"@chance/ui-test-utils": "workspace:*",
 		"eslint": "^8.30.0",
 		"eslint-config-chance": "^2.0.2",
+		"lightningcss": "^1.17.1",
+		"lightningcss-cli": "^1.17.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"typescript": "^4.9.4"
@@ -37,8 +48,16 @@
 	},
 	"publishConfig": {
 		"access": "public",
-		"main": "dist/react-visually-hidden.js",
-		"module": "dist/react-visually-hidden.mjs",
-		"types": "dist/react-visually-hidden.d.ts"
+		"module": "./dist/react-visually-hidden.mjs",
+		"main": "./dist/react-visually-hidden.js",
+		"types": "./dist/react-visually-hidden.d.ts",
+		"exports": {
+			".": {
+				"import": "./dist/react-visually-hidden.mjs",
+				"require": "./dist/react-visually-hidden.js",
+				"types": "./dist/react-visually-hidden.d.ts"
+			},
+			"./react-visually-hidden.css": "./dist/react-visually-hidden.css"
+		}
 	}
 }

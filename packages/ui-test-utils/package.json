@@ -52,19 +52,19 @@
 	},
 	"publishConfig": {
 		"access": "public",
-		"main": "dist/ui-test-utils.js",
-		"module": "dist/ui-test-utils.mjs",
-		"types": "dist/ui-test-utils.d.ts",
+		"main": "./dist/ui-test-utils.js",
+		"module": "./dist/ui-test-utils.mjs",
+		"types": "./dist/ui-test-utils.d.ts",
 		"exports": {
 			".": {
-				"import": "dist/ui-test-utils.mjs",
-				"require": "dist/ui-test-utils.js",
-				"types": "dist/ui-test-utils.d.ts"
+				"import": "./dist/ui-test-utils.mjs",
+				"require": "./dist/ui-test-utils.js",
+				"types": "./dist/ui-test-utils.d.ts"
 			},
 			"./react": {
-				"import": "dist/react.mjs",
-				"require": "dist/react.js",
-				"types": "dist/react.d.ts"
+				"import": "./dist/react.mjs",
+				"require": "./dist/react.js",
+				"types": "./dist/react.d.ts"
 			}
 		}
 	}

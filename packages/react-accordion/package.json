@@ -1,9 +1,17 @@
 {
 	"name": "@chance/react-accordion",
 	"version": "0.0.13",
-	"main": "./src/react-accordion.tsx",
 	"module": "./src/react-accordion.tsx",
+	"main": "./src/react-accordion.tsx",
 	"types": "./src/react-accordion.tsx",
+	"exports": {
+		".": {
+			"import": "./src/react-accordion.tsx",
+			"require": "./src/react-accordion.tsx",
+			"types": "./src/react-accordion.tsx"
+		},
+		"./react-accordion.css": "./src/react-accordion.css"
+	},
 	"sideEffects": false,
 	"license": "MIT",
 	"files": [
@@ -13,8 +21,9 @@
 		"src/**"
 	],
 	"scripts": {
-		"build": "tsup src/react-accordion.tsx --format esm,cjs --dts",
-		"dev": "tsup src/react-accordion.tsx --format esm,cjs --watch --dts",
+		"build": "pnpm build:css && tsup src/react-accordion.tsx --format esm,cjs --dts",
+		"dev": "pnpm build:css && tsup src/react-accordion.tsx --format esm,cjs --watch --dts",
+		"build:css": "lightningcss --nesting --bundle --targets '>= 0.25%' --sourcemap src/react-accordion.css -o dist/react-accordion.css",
 		"test": "vitest --config ../../vitest.config.ts",
 		"lint": "TIMING=1 eslint src --fix",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
@@ -30,6 +39,8 @@
 		"@chance/ui-test-utils": "workspace:*",
 		"eslint": "^8.30.0",
 		"eslint-config-chance": "^2.0.2",
+		"lightningcss": "^1.17.1",
+		"lightningcss-cli": "^1.17.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"typescript": "^4.9.4"
@@ -40,8 +51,16 @@
 	},
 	"publishConfig": {
 		"access": "public",
-		"main": "dist/react-accordion.js",
 		"module": "dist/react-accordion.mjs",
-		"types": "dist/react-accordion.d.ts"
+		"main": "dist/react-accordion.js",
+		"types": "dist/react-accordion.d.ts",
+		"exports": {
+			".": {
+				"import": "./dist/react-accordion.mjs",
+				"require": "./dist/react-accordion.js",
+				"types": "./dist/react-accordion.d.ts"
+			},
+			"./react-accordion.css": "./dist/react-accordion.css"
+		}
 	}
 }

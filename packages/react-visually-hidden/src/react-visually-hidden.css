@@ -1,13 +1,13 @@
-:where([data-chance-ui-comp="visually-hidden"]:not([data-visible-on-focus])),
-:where(
-		[data-chance-ui-comp="visually-hidden"][data-visible-on-focus]:not(:focus)
-	) {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	word-wrap: normal;
-	width: 1px;
+[data-chance-ui-comp="visually-hidden"] {
+	:where(&:not([data-visible-on-focus])),
+	:where(&[data-visible-on-focus]:not(:focus)) {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		word-wrap: normal;
+		width: 1px;
+	}
 }
