@@ -18,27 +18,12 @@ import {
 import { isFunction } from "@chance/utils";
 
 const useVisuallyHidden = createComponentHook<"span", VisuallyHiddenProps>(
-	(props) => {
+	({ visibleOnFocus = false, ...props }) => {
 		return [
 			{
-				"data-ui-visually-hidden": "",
+				"data-chance-ui-comp": "visually-hidden",
+				"data-visible-on-focus": visibleOnFocus || undefined,
 				...props,
-				style: {
-					// TODO: Modernize
-					border: 0,
-					clip: "rect(0 0 0 0)",
-					height: "1px",
-					margin: "-1px",
-					overflow: "hidden",
-					padding: 0,
-					position: "absolute",
-					width: "1px",
-
-					// https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
-					whiteSpace: "nowrap",
-					wordWrap: "normal",
-					...props.style,
-				},
 			},
 		];
 	}
@@ -63,10 +48,13 @@ VisuallyHidden.displayName = "VisuallyHidden";
  * @see Docs https://TODO.com
  */
 interface VisuallyHiddenProps {
+	children: React.ReactNode;
 	/**
+	 * Whether or not the element should be visible on focus.
+	 *
 	 * @see Docs https://TODO.com
 	 */
-	children: React.ReactNode;
+	visibleOnFocus?: boolean;
 }
 
 export type { VisuallyHiddenProps };
