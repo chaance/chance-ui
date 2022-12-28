@@ -1,6 +1,6 @@
 import * as React from "react";
 import { vi } from "vitest";
-import { render } from "@chance/ui-test-utils";
+import { render } from "@chance/ui-test-utils/react";
 import { axe } from "jest-axe";
 import VisuallyHidden from "../dist/react-visually-hidden";
 

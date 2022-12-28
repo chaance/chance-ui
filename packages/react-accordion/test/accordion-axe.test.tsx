@@ -1,6 +1,6 @@
 import * as React from "react";
 import { vi, describe, expect, it } from "vitest";
-import { render, fireEvent } from "@chance/ui-test-utils";
+import { render, fireEvent } from "@chance/ui-test-utils/react";
 import { axe } from "jest-axe";
 import {
 	Accordion,

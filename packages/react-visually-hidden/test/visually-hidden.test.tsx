@@ -1,5 +1,5 @@
 import * as React from "react";
-import { render } from "@chance/ui-test-utils";
+import { render } from "@chance/ui-test-utils/react";
 import VisuallyHidden from "../dist/react-visually-hidden";
 
 describe("<VisuallyHidden />", () => {

@@ -1,12 +1,12 @@
 import * as React from "react";
 import { vi, describe, beforeEach, it, expect } from "vitest";
-import { render, fireEvent } from "@chance/ui-test-utils";
+import { render, fireEvent } from "@chance/ui-test-utils/react";
 import {
 	Accordion,
 	AccordionItem,
 	AccordionButton,
 	AccordionPanel,
-} from "../dist/react-accordion";
+} from "../src/react-accordion";
 
 describe("<Accordion />", () => {
 	describe("a11y", () => {
@@ -119,6 +119,7 @@ describe("<Accordion />", () => {
 
 			it("`data-chance-ui-comp=accordion-button` is present on the button elements", () => {
 				for (let button of buttons) {
+					console.log(button.dataset);
 					expect(button).toHaveAttribute(
 						"data-chance-ui-comp",
 						"accordion-button"

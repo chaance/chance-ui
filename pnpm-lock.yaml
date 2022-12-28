@@ -104,6 +104,7 @@ importers:
       react-router-dom: ^6.6.1
       typescript: ^4.9.4
       vite: ^4.0.3
+      vite-tsconfig-paths: ^4.0.3
     dependencies:
       '@chance/react-accordion': link:../../packages/react-accordion
       '@chance/react-visually-hidden': link:../../packages/react-visually-hidden
@@ -122,14 +123,17 @@ importers:
       eslint-config-chance: 2.0.2_eslint@8.30.0
       typescript: 4.9.4
       vite: 4.0.3
+      vite-tsconfig-paths: 4.0.3_p2fwcaxbionflq6hjivvbcsv5a
 
   packages/dom:
     specifiers:
+      '@chance/ui-test-utils': workspace:*
       eslint: ^8.30.0
       eslint-config-chance: ^2.0.2
       tsup: ^6.5.0
       typescript: ^4.9.4
     devDependencies:
+      '@chance/ui-test-utils': link:../ui-test-utils
       eslint: 8.30.0
       eslint-config-chance: 2.0.2_eslint@8.30.0
       tsup: 6.5.0_typescript@4.9.4
@@ -3059,7 +3063,6 @@ packages:
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
-    dev: false
 
   /gopd/1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -4931,6 +4934,19 @@ packages:
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
+  /tsconfck/2.0.2_typescript@4.9.4:
+    resolution: {integrity: sha512-H3DWlwKpow+GpVLm/2cpmok72pwRr1YFROV3YzAmvzfGFiC1zEM/mc9b7+1XnrxuXtEbhJ7xUSIqjPFbedp7aQ==}
+    engines: {node: ^14.13.1 || ^16 || >=18, pnpm: ^7.18.0}
+    hasBin: true
+    peerDependencies:
+      typescript: ^4.3.5
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 4.9.4
+    dev: true
+
   /tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
     dependencies:
@@ -5200,6 +5216,20 @@ packages:
       - supports-color
       - terser
     dev: false
+
+  /vite-tsconfig-paths/4.0.3_p2fwcaxbionflq6hjivvbcsv5a:
+    resolution: {integrity: sha512-gRO2Q/tOkV+9kMht5tz90+IaEKvW2zCnvwJV3tp2ruPNZOTM5rF+yXorJT4ggmAMYEaJ3nyXjx5P5jY5FwiZ+A==}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 2.0.2_typescript@4.9.4
+      vite: 4.0.3
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
 
   /vite/4.0.3:
     resolution: {integrity: sha512-HvuNv1RdE7deIfQb8mPk51UKjqptO/4RXZ5yXSAvurd5xOckwS/gg8h9Tky3uSbnjYTgUm0hVCet1cyhKd73ZA==}

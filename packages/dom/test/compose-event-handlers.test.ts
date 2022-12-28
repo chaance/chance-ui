@@ -1,12 +1,8 @@
 import { describe, it, beforeEach, afterAll, expect, vi } from "vitest";
+import { fireEvent } from "@chance/ui-test-utils";
 import { composeEventHandlers } from "../src/dom";
 
 describe("dom/compose-event-handlers", () => {
-	let event = new MouseEvent("click", {
-		view: window,
-		bubbles: true,
-		cancelable: true,
-	});
 	let elem = document.createElement("button");
 	let listeners = {
 		internal: vi.fn(),
@@ -43,14 +39,14 @@ describe("dom/compose-event-handlers", () => {
 
 	it("calls external handler", () => {
 		elem.addEventListener("click", composed);
-		elem.dispatchEvent(event);
+		fireEvent.click(elem);
 		expect(listeners.external).toHaveBeenCalledTimes(1);
 		elem.removeEventListener("click", composed);
 	});
 
 	it("calls internal handler", () => {
 		elem.addEventListener("click", composed);
-		elem.dispatchEvent(event);
+		fireEvent.click(elem);
 		expect(listeners.internal).toHaveBeenCalledTimes(1);
 		elem.removeEventListener("click", composed);
 	});
@@ -58,14 +54,14 @@ describe("dom/compose-event-handlers", () => {
 	describe("when external handler calls event.preventDefault", () => {
 		it("calls external handler", () => {
 			elem.addEventListener("click", composedWithPreventDefault);
-			elem.dispatchEvent(event);
+			fireEvent.click(elem);
 			expect(listeners.external).toHaveBeenCalledTimes(1);
 			elem.removeEventListener("click", composedWithPreventDefault);
 		});
 
 		it("does not call internal handler", () => {
 			elem.addEventListener("click", composedWithPreventDefault);
-			elem.dispatchEvent(event);
+			fireEvent.click(elem);
 			expect(listeners.internal).not.toHaveBeenCalled();
 			elem.removeEventListener("click", composedWithPreventDefault);
 		});

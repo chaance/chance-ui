@@ -43,6 +43,7 @@ export type RenderOptions = Omit<TLRenderOptions, "queries"> & {
 export type RenderResult<
 	P extends React.HTMLAttributes<T>,
 	T extends HTMLElement
+	// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 > = TLRenderResult<typeof import("@testing-library/react").queries> & {
 	setProps(props: P): RenderResult<P, T>;
 	forceUpdate(): RenderResult<P, T>;

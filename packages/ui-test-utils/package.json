@@ -1,9 +1,21 @@
 {
 	"name": "@chance/ui-test-utils",
 	"version": "0.0.13",
-	"main": "./src/ui-test-utils.tsx",
-	"module": "./src/ui-test-utils.tsx",
-	"types": "./src/ui-test-utils.tsx",
+	"main": "./src/ui-test-utils.ts",
+	"module": "./src/ui-test-utils.ts",
+	"types": "./src/ui-test-utils.ts",
+	"exports": {
+		".": {
+			"import": "./src/ui-test-utils.ts",
+			"require": "./src/ui-test-utils.ts",
+			"types": "./src/ui-test-utils.ts"
+		},
+		"./react": {
+			"import": "./src/react.tsx",
+			"require": "./src/react.tsx",
+			"types": "./src/react.tsx"
+		}
+	},
 	"files": [
 		"README.md",
 		"LICENSE",
@@ -12,8 +24,8 @@
 	],
 	"license": "MIT",
 	"scripts": {
-		"build": "tsup src/ui-test-utils.tsx --format esm,cjs --dts",
-		"dev": "tsup src/ui-test-utils.tsx --format esm,cjs --watch --dts",
+		"build": "tsup",
+		"dev": "tsup --watch",
 		"lint": "TIMING=1 eslint src --fix",
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
@@ -42,6 +54,18 @@
 		"access": "public",
 		"main": "dist/ui-test-utils.js",
 		"module": "dist/ui-test-utils.mjs",
-		"types": "dist/ui-test-utils.d.ts"
+		"types": "dist/ui-test-utils.d.ts",
+		"exports": {
+			".": {
+				"import": "dist/ui-test-utils.mjs",
+				"require": "dist/ui-test-utils.js",
+				"types": "dist/ui-test-utils.d.ts"
+			},
+			"./react": {
+				"import": "dist/react.mjs",
+				"require": "dist/react.js",
+				"types": "dist/react.d.ts"
+			}
+		}
 	}
 }

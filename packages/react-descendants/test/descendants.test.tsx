@@ -1,7 +1,7 @@
 import * as React from "react";
 // import { vi } from "vitest";
 // import { waitFor, fireEvent } from "@testing-library/react";
-import { render } from "@chance/ui-test-utils";
+import { render } from "@chance/ui-test-utils/react";
 import { createDescendantContext } from "../dist/react-descendants";
 
 function ForceUpdater({

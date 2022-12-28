@@ -20,6 +20,7 @@
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
 	"devDependencies": {
+		"@chance/ui-test-utils": "workspace:*",
 		"eslint": "^8.30.0",
 		"eslint-config-chance": "^2.0.2",
 		"tsup": "^6.5.0",
