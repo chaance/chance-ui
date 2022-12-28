@@ -15,7 +15,8 @@ html {
 }
 
 html,
-body {
+body,
+#root {
 	height: 100%;
 	width: 100%;
 }
@@ -39,7 +40,6 @@ button,
 input,
 textarea,
 select {
-	outline: none;
 	font-family: inherit;
 	font-size: inherit;
 	box-sizing: border-box;

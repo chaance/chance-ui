@@ -1,0 +1,6 @@
+{
+	"extends": ["chance", "chance/react", "chance/typescript"],
+	"rules": {
+		"react/jsx-pascal-case": 0
+	}
+}

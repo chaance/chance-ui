@@ -1,11 +1,12 @@
 {
 	"extends": "../../tsconfig-react.json",
-	"include": ["src", "test", "examples"],
+	"include": ["src", "test"],
 	"exclude": ["dist"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"~": ["../../*"]
+			"~": ["../../*"],
+			"@chance/react-accordion": ["src/react-accordion.tsx"]
 		}
 	}
 }

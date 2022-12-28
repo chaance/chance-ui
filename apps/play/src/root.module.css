@@ -1,4 +1,4 @@
-.app {
+.outer {
 	position: fixed;
 	overflow: hidden;
 	height: 100vh;
@@ -9,18 +9,22 @@
 	height: 100%;
 	width: 100%;
 	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
+
+	display: grid;
+	grid-template: "side main" 100% / min-content 1fr;
 }
 
 .side {
+	--gap: 10px;
 	height: 100%;
-	resize: horizontal;
 	overflow: auto;
+	grid-area: side;
 	min-width: 200px;
 	width: 250px;
-	max-width: calc(100% - 200px);
+	max-width: 50vw;
+	height: calc(100% - var(--gap) * 2);
+	margin: var(--gap) 0 0 var(--gap);
+	resize: horizontal;
 }
 
 .sideHeader {
@@ -94,8 +98,29 @@
 	--gap: 10px;
 	flex: 1 1 auto;
 	height: calc(100% - var(--gap) * 2);
-	margin-right: var(--gap);
+	margin: var(--gap) var(--gap) 0 var(--gap);
 	background: #fff;
-	overflow: auto;
+	overflow: hidden;
 	box-shadow: rgb(0 0 0 / 10%) 0px 1px 5px 0px;
+	grid-area: main;
+}
+
+.canvas {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	overflow: auto;
+	padding: 1rem;
+}
+
+@media (min-width: 400px) {
+	.canvas {
+		padding: 1.5rem;
+	}
+}
+
+@media (min-width: 760px) {
+	.canvas {
+		padding: 2rem;
+	}
 }
