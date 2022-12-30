@@ -21,8 +21,9 @@
 		"src/**"
 	],
 	"scripts": {
-		"build": "pnpm build:css && tsup src/react-accordion.tsx --format esm,cjs --dts",
-		"dev": "pnpm build:css && tsup src/react-accordion.tsx --format esm,cjs --watch --dts",
+		"build": "pnpm build:js && pnpm build:css",
+		"dev": "pnpm build:css && pnpm build:js -- --watch",
+		"build:js": "tsup src/react-accordion.tsx --format esm,cjs --dts",
 		"build:css": "lightningcss --nesting --bundle --targets '>= 0.25%' --sourcemap src/react-accordion.css -o dist/react-accordion.css",
 		"test": "vitest --config ../../vitest.config.ts",
 		"lint": "TIMING=1 eslint src --fix",
