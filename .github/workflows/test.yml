@@ -1,0 +1,54 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+    paths-ignore:
+      - "apps/docs/**"
+      - "scripts/**"
+      - "contributors.yml"
+      - "**/*.md"
+  pull_request:
+    paths-ignore:
+      - "apps/docs/**"
+      - "scripts/**"
+      - "contributors.yml"
+      - "**/*.md"
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  CI: true
+
+jobs:
+  test:
+    name: Test
+    if: ${{ github.repository == 'chaance/chance-ui' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          # This makes Actions fetch all Git history so that Changesets can
+          # generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install with pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: Build
+        run: pnpm build --filter "./packages/**"
+
+      - name: Test
+        run: pnpm test
