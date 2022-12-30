@@ -13,6 +13,8 @@ import { importStories } from "~/lib/utils";
 import type { StoryMeta } from "~/types";
 import styles from "./root.module.css";
 
+export const path = "/";
+
 export async function loader({ params }: LoaderFunctionArgs) {
 	let stories = await importStories({
 		getId: (path) => parsePath(path).name,
