@@ -119,7 +119,6 @@ describe("<Accordion />", () => {
 
 			it("`data-chance-ui-comp=accordion-button` is present on the button elements", () => {
 				for (let button of buttons) {
-					console.log(button.dataset);
 					expect(button).toHaveAttribute(
 						"data-chance-ui-comp",
 						"accordion-button"

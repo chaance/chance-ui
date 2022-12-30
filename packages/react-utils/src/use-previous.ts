@@ -6,8 +6,10 @@ import { useRef, useEffect } from "react";
  * @param value
  */
 export function usePrevious<ValueType = any>(value: ValueType) {
-	console.log("usePrevious is unsafe, probably");
-	const ref = useRef<ValueType | null>(null);
+	console.warn(
+		"usePrevious is unsafe in React 18. You should probably not use it."
+	);
+	let ref = useRef<ValueType | null>(null);
 	useEffect(() => {
 		ref.current = value;
 	}, [value]);
