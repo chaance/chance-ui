@@ -11,6 +11,9 @@ insert_final_newline = true
 [*.yml]
 indent_style = space
 
+[*.yaml]
+indent_style = space
+
 [**.min.js]
 indent_style = ignore
 insert_final_newline = ignore
